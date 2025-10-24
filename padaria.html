@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padaria - Supermercado Rigonato</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="Supermercado Rigonato">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="padaria.html">Padaria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="acougue.html">Açougue</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hortifruti.html">Hortifrúti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mercearia.html">Mercearia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="racoes.html">Rações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bebidas.html">Bebidas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="novidades.html">Novidades</a>
+                    </li>
+                </ul>
+                <div class="cart-icon-container">
+                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                        <i class="bi bi-cart3"></i>
+                        <span class="cart-badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da Seção -->
+    <section class="section-header" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Padaria Rigonato</h1>
+            <p class="lead">Pães fresquinhos todos os dias, bolos artesanais e uma variedade de delícias para sua mesa</p>
+        </div>
+    </section>
+
+    <!-- Produtos da Seção -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2 class="mb-3">Nossos Produtos de Padaria</h2>
+                    <p class="text-muted">Trabalhamos com produtos frescos todos os dias, assados no forno a lenha tradicional</p>
+                </div>
+            </div>
+            <div class="products-grid" id="products-grid">
+                <!-- Produtos serão carregados via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Checkout -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Finalizar Pedido - Supermercado Rigonato</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Resumo do Pedido</h6>
+                            <div id="cart-items">
+                                <!-- Itens do carrinho serão adicionados aqui -->
+                            </div>
+                            <div class="d-flex justify-content-between mt-3">
+                                <strong>Total:</strong>
+                                <strong id="cart-total">R$ 0,00</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Dados para Entrega</h6>
+                            <form id="checkout-form">
+                                <div class="mb-3">
+                                    <label for="customer-name" class="form-label">Nome</label>
+                                    <input type="text" class="form-control" id="customer-name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="customer-phone" class="form-label">Telefone</label>
+                                    <input type="tel" class="form-control" id="customer-phone" required>
+                                </div>
+                                
+                                <div class="delivery-option">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="deliveryOption" id="deliveryHome" value="home" checked>
+                                        <label class="form-check-label" for="deliveryHome">
+                                            Receber em Casa
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="deliveryOption" id="deliveryStore" value="store">
+                                        <label class="form-check-label" for="deliveryStore">
+                                            Retirar na Loja
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div id="address-fields">
+                                    <div class="mb-3">
+                                        <label for="customer-address" class="form-label">Endereço (Rua/Av.)</label>
+                                        <input type="text" class="form-control" id="customer-address">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="customer-number" class="form-label">Número</label>
+                                                <input type="text" class="form-control" id="customer-number">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="customer-neighborhood" class="form-label">Bairro</label>
+                                                <input type="text" class="form-control" id="customer-neighborhood">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="customer-reference" class="form-label">Referência (opcional)</label>
+                                        <input type="text" class="form-control" id="customer-reference">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="delivery-date" class="form-label">Data de Entrega/Retirada</label>
+                                    <input type="date" class="form-control" id="delivery-date" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="delivery-time" class="form-label">Horário</label>
+                                    <select class="form-control" id="delivery-time" required>
+                                        <option value="">Selecione um horário</option>
+                                        <option value="09:00">09:00</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="15:00">15:00</option>
+                                        <option value="16:00">16:00</option>
+                                        <option value="17:00">17:00</option>
+                                        <option value="18:00">18:00</option>
+                                    </select>
+                                    <small class="form-text text-muted">Horário de funcionamento: 9:00 às 18:00</small>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar Comprando</button>
+                    <button type="button" class="btn btn-primary" id="send-whatsapp">Enviar Pedido via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Supermercado Rigonato</h5>
+                    <p>Oferecendo os melhores produtos com qualidade e preço justo desde 1990.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Links Rápidos</h5>
+                    <div class="footer-links">
+                        <a href="sobrenos.html">Sobre Nós</a>
+                        <a href="#">Política de Privacidade</a>
+                        <a href="#">Termos de Uso</a>
+                        <a href="#">Contato</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contato</h5>
+                    <p><i class="bi bi-geo-alt"></i> Rua Exemplo, 123 - Centro</p>
+                    <p><i class="bi bi-telephone"></i> (69) 99395-9196</p>
+                    <p><i class="bi bi-clock"></i> Seg-Sáb: 8h-20h | Dom: 8h-12h</p>
+                </div>
+            </div>
+            <div class="text-center pt-3 border-top">
+                <p>&copy; 2023 Supermercado Rigonato. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript Personalizado -->
+    <script src="js/script.js"></script>
+</body>
+</html>

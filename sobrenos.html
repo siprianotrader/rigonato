@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Supermercado Rigonato</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header (mesmo do index.html) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="Supermercado Rigonato">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="padaria.html">Padaria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="acougue.html">Açougue</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hortifruti.html">Hortifrúti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mercearia.html">Mercearia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="racoes.html">Rações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bebidas.html">Bebidas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="novidades.html">Novidades</a>
+                    </li>
+                </ul>
+                <div class="cart-icon-container">
+                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                        <i class="bi bi-cart3"></i>
+                        <span class="cart-badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4">Nossa História</h1>
+            <p class="lead">Mais de 30 anos oferecendo qualidade e confiança para nossa comunidade</p>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <section class="about-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="mb-4">Sobre o Supermercado Rigonato</h2>
+                    <p class="mb-4">
+                        Fundado em 1990, o Supermercado Rigonato nasceu do sonho de oferecer à comunidade 
+                        produtos de qualidade com preços justos. O que começou como um pequeno empório 
+                        familiar transformou-se em uma referência em atendimento e variedade na região.
+                    </p>
+                    
+                    <h3 class="mb-3">Nossa Trajetória</h3>
+                    <div class="history-timeline">
+                        <div class="timeline-item">
+                            <h5>1990 - A Fundação</h5>
+                            <p>Início das atividades com foco em produtos básicos e atendimento personalizado.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>1998 - Primeira Expansão</h5>
+                            <p>Ampliação do espaço físico e diversificação do mix de produtos.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>2005 - Modernização</h5>
+                            <p>Implementação de sistema de gestão e renovação completa da loja.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>2015 - Novos Departamentos</h5>
+                            <p>Criação das seções de padaria, açougue e hortifrúti próprios.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>2020 - Serviço de Delivery</h5>
+                            <p>Implementação do sistema de entregas para atender às necessidades dos clientes.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>2023 - Plataforma Digital</h5>
+                            <p>Lançamento do site e sistema de pedidos online via WhatsApp.</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mb-4 mt-5">Nossos Valores</h3>
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                            <h5>Qualidade</h5>
+                            <p>Selecionamos rigorosamente cada produto para garantir a melhor experiência.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h5>Confiança</h5>
+                            <p>Mais de três décadas construindo relacionamentos baseados na honestidade.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h5>Comunidade</h5>
+                            <p>Apoiamos e fazemos parte ativa do desenvolvimento da nossa região.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5 p-4 bg-light rounded">
+                        <h4 class="mb-3">Missão e Visão</h4>
+                        <p class="mb-3">
+                            <strong>Missão:</strong> Oferecer produtos de qualidade com preços acessíveis, 
+                            proporcionando uma experiência de compra diferenciada e atendimento personalizado.
+                        </p>
+                        <p>
+                            <strong>Visão:</strong> Ser referência em comércio varejista, reconhecido pela 
+                            excelência no atendimento e compromisso com a satisfação dos clientes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (mesmo do index.html) -->
+    <footer>
+        <div class="container">
+            <!-- Conteúdo do footer igual ao do index.html -->
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript Personalizado -->
+    <script src="js/script.js"></script>
+</body>
+</html>

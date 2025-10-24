@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercearia - Supermercado Rigonato</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="Supermercado Rigonato">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="padaria.html">Padaria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="acougue.html">Açougue</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hortifruti.html">Hortifrúti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="mercearia.html">Mercearia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="racoes.html">Rações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bebidas.html">Bebidas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="novidades.html">Novidades</a>
+                    </li>
+                </ul>
+                <div class="cart-icon-container">
+                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                        <i class="bi bi-cart3"></i>
+                        <span class="cart-badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da Seção -->
+    <section class="section-header" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Mercearia Rigonato</h1>
+            <p class="lead">Tudo para sua despensa com a qualidade que você já conhece</p>
+        </div>
+    </section>
+
+    <!-- Produtos da Seção -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2 class="mb-3">Nossos Produtos de Mercearia</h2>
+                    <p class="text-muted">Produtos básicos e especiais para o seu dia a dia</p>
+                </div>
+            </div>
+            <div class="products-grid" id="products-grid">
+                <!-- Produtos serão carregados via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Checkout -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Conteúdo do modal igual ao da padaria -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <!-- Conteúdo do footer igual ao da padaria -->
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript Personalizado -->
+    <script src="js/script.js"></script>
+</body>
+</html>

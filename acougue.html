@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Açougue - Supermercado Rigonato</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="Supermercado Rigonato">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="padaria.html">Padaria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="acougue.html">Açougue</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hortifruti.html">Hortifrúti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mercearia.html">Mercearia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="racoes.html">Rações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bebidas.html">Bebidas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="novidades.html">Novidades</a>
+                    </li>
+                </ul>
+                <div class="cart-icon-container">
+                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                        <i class="bi bi-cart3"></i>
+                        <span class="cart-badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da Seção -->
+    <section class="section-header" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Açougue Rigonato</h1>
+            <p class="lead">Carnes selecionadas, cortes especiais e qualidade garantida para seu churrasco</p>
+        </div>
+    </section>
+
+    <!-- Informações do Açougue -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-3">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <i class="bi bi-star-fill text-warning me-2 fs-5"></i>
+                        <div>
+                            <h6 class="mb-0">Carnes Premium</h6>
+                            <small class="text-muted">Seleção especial</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <i class="bi bi-clock-fill text-primary me-2 fs-5"></i>
+                        <div>
+                            <h6 class="mb-0">Frescor Garantido</h6>
+                            <small class="text-muted">Abate diário</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <i class="bi bi-scissors text-success me-2 fs-5"></i>
+                        <div>
+                            <h6 class="mb-0">Cortes Sob Encomenda</h6>
+                            <small class="text-muted">Aceitamos pedidos</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos da Seção -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2 class="mb-3">Nossos Cortes e Carnes</h2>
+                    <p class="text-muted">Trabalhamos com carnes de primeira qualidade, sempre frescas e com procedência garantida</p>
+                </div>
+            </div>
+
+            <!-- Filtros de Categoria -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="d-flex flex-wrap gap-2">
+                        <button class="btn btn-outline-primary active" data-filter="all">Todos</button>
+                        <button class="btn btn-outline-primary" data-filter="bovina">Bovina</button>
+                        <button class="btn btn-outline-primary" data-filter="suina">Suína</button>
+                        <button class="btn btn-outline-primary" data-filter="frango">Frango</button>
+                        <button class="btn btn-outline-primary" data-filter="linguiças">Linguiças</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+                <!-- Produtos serão carregados via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Dicas do Açougueiro -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h3 class="text-center mb-4">💡 Dicas do Nosso Açougueiro</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">🥩 Para Churrasco</h5>
+                                    <p class="card-text">A picanha é ideal quando você quer impressionar. Para o dia a dia, a alcatra e o contrafilé são ótimas opções.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">🍳 Para o Dia a Dia</h5>
+                                    <p class="card-text">A carne moída é versátil e econômica. Patinho e coxão mole são perfeitos para ensopados e strogonoff.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">⏱️ Conservação</h5>
+                                    <p class="card-text">Mantenha a carne refrigerada e consuma em até 3 dias. Para freezer, embale bem e consuma em 3 meses.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">🔪 Cortes Especiais</h5>
+                                    <p class="card-text">Solicite cortes especiais com antecedência. Temos fraldinha, maminha e costela premium para ocasiões especiais.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Checkout -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Finalizar Pedido - Supermercado Rigonato</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Resumo do Pedido</h6>
+                            <div id="cart-items">
+                                <!-- Itens do carrinho serão adicionados aqui -->
+                            </div>
+                            <div class="d-flex justify-content-between mt-3">
+                                <strong>Total:</strong>
+                                <strong id="cart-total">R$ 0,00</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Dados para Entrega</h6>
+                            <form id="checkout-form">
+                                <div class="mb-3">
+                                    <label for="customer-name" class="form-label">Nome</label>
+                                    <input type="text" class="form-control" id="customer-name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="customer-phone" class="form-label">Telefone</label>
+                                    <input type="tel" class="form-control" id="customer-phone" required>
+                                </div>
+                                
+                                <div class="delivery-option">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="deliveryOption" id="deliveryHome" value="home" checked>
+                                        <label class="form-check-label" for="deliveryHome">
+                                            Receber em Casa
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="deliveryOption" id="deliveryStore" value="store">
+                                        <label class="form-check-label" for="deliveryStore">
+                                            Retirar na Loja
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div id="address-fields">
+                                    <div class="mb-3">
+                                        <label for="customer-address" class="form-label">Endereço (Rua/Av.)</label>
+                                        <input type="text" class="form-control" id="customer-address">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="customer-number" class="form-label">Número</label>
+                                                <input type="text" class="form-control" id="customer-number">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="customer-neighborhood" class="form-label">Bairro</label>
+                                                <input type="text" class="form-control" id="customer-neighborhood">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="customer-reference" class="form-label">Referência (opcional)</label>
+                                        <input type="text" class="form-control" id="customer-reference">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="delivery-date" class="form-label">Data de Entrega/Retirada</label>
+                                    <input type="date" class="form-control" id="delivery-date" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="delivery-time" class="form-label">Horário</label>
+                                    <select class="form-control" id="delivery-time" required>
+                                        <option value="">Selecione um horário</option>
+                                        <option value="09:00">09:00</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="15:00">15:00</option>
+                                        <option value="16:00">16:00</option>
+                                        <option value="17:00">17:00</option>
+                                        <option value="18:00">18:00</option>
+                                    </select>
+                                    <small class="form-text text-muted">Horário de funcionamento: 9:00 às 18:00</small>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar Comprando</button>
+                    <button type="button" class="btn btn-primary" id="send-whatsapp">Enviar Pedido via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Supermercado Rigonato</h5>
+                    <p>Oferecendo os melhores produtos com qualidade e preço justo desde 1990.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Links Rápidos</h5>
+                    <div class="footer-links">
+                        <a href="sobrenos.html">Sobre Nós</a>
+                        <a href="#">Política de Privacidade</a>
+                        <a href="#">Termos de Uso</a>
+                        <a href="#">Contato</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contato</h5>
+                    <p><i class="bi bi-geo-alt"></i> Rua Exemplo, 123 - Centro</p>
+                    <p><i class="bi bi-telephone"></i> (69) 99395-9196</p>
+                    <p><i class="bi bi-clock"></i> Seg-Sáb: 8h-20h | Dom: 8h-12h</p>
+                </div>
+            </div>
+            <div class="text-center pt-3 border-top">
+                <p>&copy; 2023 Supermercado Rigonato. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript Personalizado -->
+    <script src="js/script.js"></script>
+    
+    <script>
+        // Filtros para produtos do açougue
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('[data-filter]');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active de todos os botões
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Adiciona active no botão clicado
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    filterProducts(filter);
+                });
+            });
+        });
+
+        function filterProducts(filter) {
+            const products = document.querySelectorAll('.product-card');
+            
+            products.forEach(product => {
+                const category = product.getAttribute('data-category');
+                
+                if (filter === 'all' || category === filter) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Modifique a função createProductCard para incluir data-category
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('data-category', product.category || 'all');
+            card.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="product-img">
+                <div class="p-3">
+                    <h6 class="mb-2">${product.name}</h6>
+                    <div class="product-price mb-2">R$ ${product.price.toFixed(2)}</div>
+                    <div class="product-category mb-2">
+                        <small class="text-muted">${getCategoryName(product.category)}</small>
+                    </div>
+                    <button class="btn btn-add-cart" data-id="${product.id}">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+            `;
+            return card;
+        }
+
+        function getCategoryName(category) {
+            const categories = {
+                'bovina': 'Bovina',
+                'suina': 'Suína', 
+                'frango': 'Frango',
+                'linguiças': 'Linguiças'
+            };
+            return categories[category] || 'Carne';
+        }
+    </script>
+</body>
+</html>
