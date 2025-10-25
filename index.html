@@ -13,47 +13,54 @@
 </head>
 <body>
     <!-- Header e Menu de Navegação -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="img/logo.png" alt="Supermercado Rigonato">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <!-- Hamburger Menu (visível apenas no mobile) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Logo (esquerda no desktop, centro no mobile) -->
+        <a class="navbar-brand" href="index.html">
+            <img src="img/logo.png" alt="Supermercado Rigonato">
+        </a>
+        
+        <!-- Carrinho (sempre na direita) -->
+        <div class="cart-icon-container">
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                <i class="bi bi-cart3"></i>
+                <span class="cart-badge">0</span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="padaria.html">Padaria</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="acougue.html">Açougue</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="hortifruti.html">Hortifrúti</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="mercearia.html">Mercearia</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="racoes.html">Rações</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="bebidas.html">Bebidas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="novidades.html">Novidades</a>
-                    </li>
-                </ul>
-                <div class="cart-icon-container">
-                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
-                        <i class="bi bi-cart3"></i>
-                        <span class="cart-badge">0</span>
-                    </button>
-                </div>
-            </div>
         </div>
-    </nav>
+
+        <!-- Menu Colapsável (visível no desktop, colapsável no mobile) -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="padaria.html">Padaria</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="acougue.html">Açougue</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="hortifruti.html">Hortifrúti</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mercearia.html">Mercearia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="racoes.html">Rações</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bebidas.html">Bebidas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="novidades.html">Novidades</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
     <!-- Carrossel Responsivo -->
     <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -89,48 +96,54 @@
     <section class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Nossas Seções</h2>
-            <div class="row g-4">
-                <div class="col-6 col-md-3">
+            <div class="carousel-container">
+                <button class="carousel-btn prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                    </svg>
+                </button>
+                
+                <div class="carousel-track">
                     <a href="padaria.html" class="section-card">
                         <img src="img/categorias/padaria.jpg" alt="Padaria" class="section-icon">
                         <h4 class="section-title">Padaria</h4>
                     </a>
-                </div>
-                <div class="col-6 col-md-3">
                     <a href="acougue.html" class="section-card">
                         <img src="img/categorias/acougue.jpg" alt="Açougue" class="section-icon">
                         <h4 class="section-title">Açougue</h4>
                     </a>
-                </div>
-                <div class="col-6 col-md-3">
                     <a href="hortifruti.html" class="section-card">
                         <img src="img/categorias/hortifruti.jpg" alt="Hortifrúti" class="section-icon">
                         <h4 class="section-title">Hortifrúti</h4>
                     </a>
-                </div>
-                <div class="col-6 col-md-3">
                     <a href="mercearia.html" class="section-card">
                         <img src="img/categorias/mercado.jpg" alt="Mercearia" class="section-icon">
                         <h4 class="section-title">Mercearia</h4>
                     </a>
-                </div>
-                <div class="col-6 col-md-4">
                     <a href="racoes.html" class="section-card">
                         <img src="img/categorias/racoes.jpg" alt="Rações" class="section-icon">
                         <h4 class="section-title">Rações</h4>
                     </a>
-                </div>
-                <div class="col-6 col-md-4">
                     <a href="bebidas.html" class="section-card">
                         <img src="img/categorias/bebidas.jpg" alt="Bebidas" class="section-icon">
                         <h4 class="section-title">Bebidas</h4>
                     </a>
-                </div>
-                <div class="col-6 col-md-4">
                     <a href="novidades.html" class="section-card">
                         <img src="img/categorias/novidades.jpg" alt="Novidades" class="section-icon">
                         <h4 class="section-title">Novidades</h4>
                     </a>
+                </div>
+                
+                <button class="carousel-btn next">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </button>
+                
+                <div class="carousel-indicators">
+                    <button class="carousel-indicator active" data-slide="0"></button>
+                    <button class="carousel-indicator" data-slide="1"></button>
+                    <button class="carousel-indicator" data-slide="2"></button>
                 </div>
             </div>
         </div>
@@ -139,51 +152,51 @@
     <!-- Expositores de Produtos -->
     <section class="py-5 bg-light">
         <div class="container">
-            <h2 class="mb-4">Produtos em Destaque</h2>
+            <h2 class="mb-4 text-center">Produtos em Destaque</h2>
             
-            <div class="mb-5">
+            <div class="mb-5 text-center">
                 <h3 class="mb-3">Padaria</h3>
                 <div class="product-carousel" id="padaria-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
                 </div>
             </div>
             
-            <div class="mb-5">
+            <div class="mb-5 text-center">
                 <h3 class="mb-3">Açougue</h3>
                 <div class="product-carousel" id="acougue-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
                 </div>
             </div>
             
-            <div class="mb-5">
+            <div class="mb-5 text-center">
                 <h3 class="mb-3">Hortifrúti</h3>
                 <div class="product-carousel" id="hortifruti-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
                 </div>
             </div>
             
-            <div class="mb-5">
+            <div class="mb-5 text-center">
                 <h3 class="mb-3">Mercearia</h3>
                 <div class="product-carousel" id="mercearia-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
                 </div>
             </div>
             
-            <div class="mb-5">
+            <div class="mb-5 text-center">
                 <h3 class="mb-3">Rações</h3>
                 <div class="product-carousel" id="racoes-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
                 </div>
             </div>
             
-            <div class="mb-5">
+            <div class="mb-5 text-center">
                 <h3 class="mb-3">Bebidas</h3>
                 <div class="product-carousel" id="bebidas-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
                 </div>
             </div>
             
-            <div class="mb-5">
+            <div class="mb-5 text-center">
                 <h3 class="mb-3">Novidades</h3>
                 <div class="product-carousel" id="novidades-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
@@ -300,7 +313,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row">
+            <div class="row text-center text-md-start">
                 <div class="col-md-4 mb-4">
                     <h5>Supermercado Rigonato</h5>
                     <p>Oferecendo os melhores produtos com qualidade e preço justo desde 1990.</p>
