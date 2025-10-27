@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhe Conosco - Supermercado Rigonato</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header e Menu de Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <!-- Hamburger Menu (visível apenas no mobile) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Logo (esquerda no desktop, centro no mobile) -->
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="Supermercado Rigonato">
+            </a>
+            
+            <!-- Carrinho (sempre na direita) -->
+            <div class="cart-icon-container">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                    <i class="bi bi-cart3"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+            </div>
+
+            <!-- Menu Colapsável (visível no desktop, colapsável no mobile) -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="padaria.html">Padaria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="acougue.html">Açougue</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hortifruti.html">Hortifrúti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mercearia.html">Mercearia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="racoes.html">Rações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bebidas.html">Bebidas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="novidades.html">Novidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobrenos.html">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.html">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="trabalheconosco.html">Trabalhe Conosco</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="work-hero">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4">Trabalhe Conosco</h1>
+            <p class="lead">Faça parte do time Rigonato e cresça conosco</p>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <section class="work-content py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="mb-4">Venha Fazer Parte da Nossa Equipe</h2>
+                    <p class="lead mb-5">
+                        No Supermercado Rigonato, valorizamos cada colaborador e acreditamos que 
+                        pessoas são nosso maior patrimônio. Oferecemos um ambiente de trabalho 
+                        acolhedor e oportunidades de crescimento.
+                    </p>
+
+                    <!-- Benefícios -->
+                    <div class="benefits-section mb-5">
+                        <h3 class="mb-4">Nossos Benefícios</h3>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="benefit-card text-center">
+                                    <div class="benefit-icon">
+                                        <i class="bi bi-cash-coin"></i>
+                                    </div>
+                                    <h5>Salário Competitivo</h5>
+                                    <p>Remuneração justa e compatível com o mercado</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="benefit-card text-center">
+                                    <div class="benefit-icon">
+                                        <i class="bi bi-calendar-check"></i>
+                                    </div>
+                                    <h5>Vale Transporte</h5>
+                                    <p>Auxílio transporte para facilitar seu deslocamento</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="benefit-card text-center">
+                                    <div class="benefit-icon">
+                                        <i class="bi bi-egg-fried"></i>
+                                    </div>
+                                    <h5>Vale Alimentação</h5>
+                                    <p>Benefício alimentação para seu bem-estar</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="benefit-card text-center">
+                                    <div class="benefit-icon">
+                                        <i class="bi bi-graph-up"></i>
+                                    </div>
+                                    <h5>Plano de Carreira</h5>
+                                    <p>Oportunidades reais de crescimento profissional</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="benefit-card text-center">
+                                    <div class="benefit-icon">
+                                        <i class="bi bi-book"></i>
+                                    </div>
+                                    <h5>Treinamento</h5>
+                                    <p>Capacitação constante para seu desenvolvimento</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="benefit-card text-center">
+                                    <div class="benefit-icon">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <h5>Ambiente Familiar</h5>
+                                    <p>Clima organizacional agradável e acolhedor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vagas Disponíveis -->
+                    <div class="vacancies-section mb-5">
+                        <h3 class="mb-4">Vagas Disponíveis</h3>
+                        <div class="vacancy-list">
+                            <div class="vacancy-card">
+                                <div class="vacancy-header">
+                                    <h4>Repositor de Mercadorias</h4>
+                                    <span class="badge bg-primary">Disponível</span>
+                                </div>
+                                <div class="vacancy-details">
+                                    <p><strong>Requisitos:</strong> Ensino Médio completo, experiência anterior desejável</p>
+                                    <p><strong>Horário:</strong> 6h às 14h | 14h às 22h (escala 6x1)</p>
+                                    <p><strong>Salário:</strong> A combinar + benefícios</p>
+                                </div>
+                            </div>
+
+                            <div class="vacancy-card">
+                                <div class="vacancy-header">
+                                    <h4>Operador de Caixa</h4>
+                                    <span class="badge bg-primary">Disponível</span>
+                                </div>
+                                <div class="vacancy-details">
+                                    <p><strong>Requisitos:</strong> Ensino Médio completo, experiência com caixa registradora</p>
+                                    <p><strong>Horário:</strong> 7h às 15h | 15h às 23h (escala 6x1)</p>
+                                    <p><strong>Salário:</strong> A combinar + benefícios</p>
+                                </div>
+                            </div>
+
+                            <div class="vacancy-card">
+                                <div class="vacancy-header">
+                                    <h4>Auxiliar de Açougue</h4>
+                                    <span class="badge bg-primary">Disponível</span>
+                                </div>
+                                <div class="vacancy-details">
+                                    <p><strong>Requisitos:</strong> Experiência na área, curso de açougueiro desejável</p>
+                                    <p><strong>Horário:</strong> 7h às 16h (segunda a sábado)</p>
+                                    <p><strong>Salário:</strong> A combinar + benefícios</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulário de Candidatura -->
+                    <div class="application-form-container">
+                        <h3 class="mb-4">Candidate-se</h3>
+                        <form id="application-form" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="applicant-name" class="form-label">Nome Completo *</label>
+                                    <input type="text" class="form-control" id="applicant-name" name="applicant-name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="applicant-email" class="form-label">E-mail *</label>
+                                    <input type="email" class="form-control" id="applicant-email" name="applicant-email" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="applicant-phone" class="form-label">Telefone *</label>
+                                    <input type="tel" class="form-control" id="applicant-phone" name="applicant-phone" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="applicant-position" class="form-label">Vaga de Interesse *</label>
+                                    <select class="form-control" id="applicant-position" name="applicant-position" required>
+                                        <option value="">Selecione a vaga</option>
+                                        <option value="repositor">Repositor de Mercadorias</option>
+                                        <option value="caixa">Operador de Caixa</option>
+                                        <option value="acougue">Auxiliar de Açougue</option>
+                                        <option value="outra">Outra</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="applicant-experience" class="form-label">Experiência Profissional</label>
+                                <textarea class="form-control" id="applicant-experience" name="applicant-experience" rows="4" placeholder="Descreva sua experiência profissional..."></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="applicant-message" class="form-label">Por que você quer trabalhar conosco?</label>
+                                <textarea class="form-control" id="applicant-message" name="applicant-message" rows="3" placeholder="Conte-nos um pouco sobre você..."></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="applicant-resume" class="form-label">Currículo (PDF ou DOC) *</label>
+                                <input type="file" class="form-control" id="applicant-resume" name="applicant-resume" accept=".pdf,.doc,.docx" required>
+                                <small class="form-text text-muted">Tamanho máximo: 5MB</small>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="bi bi-send"></i> Enviar Candidatura
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-4 mb-4">
+                    <h5>Supermercado Rigonato</h5>
+                    <p>Oferecendo os melhores produtos com qualidade e preço justo desde 1990.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Links Rápidos</h5>
+                    <div class="footer-links">
+                        <a href="sobrenos.html">Sobre Nós</a>
+                        <a href="contato.html">Contato</a>
+                        <a href="trabalheconosco.html">Trabalhe Conosco</a>
+                        <a href="#">Política de Privacidade</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contato</h5>
+                    <p><i class="bi bi-geo-alt"></i> Rua Exemplo, 123 - Centro</p>
+                    <p><i class="bi bi-telephone"></i> (69) 99395-9196</p>
+                    <p><i class="bi bi-clock"></i> Seg-Sáb: 7:30h - 19:30 | Dom: 7:30h - 13:00 h</p>
+                </div>
+            </div>
+            <div class="text-center pt-3 border-top">
+                <p>&copy; 2025 Supermercado Rigonato. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript Personalizado -->
+    <script src="js/script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartBadge();
+            
+            // Formulário de candidatura
+            document.getElementById('application-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Candidatura enviada com sucesso! Entraremos em contato em breve.');
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>
