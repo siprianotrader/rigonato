@@ -12,17 +12,30 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header e Menu de Navegação -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="img/logo.png" alt="Supermercado Rigonato">
-            </a>
+            <!-- Hamburger Menu (visível apenas no mobile) -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
+            <!-- Logo (esquerda no desktop, centro no mobile) -->
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="Supermercado Rigonato">
+            </a>
+            
+            <!-- Carrinho (sempre na direita) -->
+            <div class="cart-icon-container">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                    <i class="bi bi-cart3"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+            </div>
+
+            <!-- Menu Colapsável (visível no desktop, colapsável no mobile) -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="padaria.html">Padaria</a>
                     </li>
@@ -45,12 +58,6 @@
                         <a class="nav-link" href="novidades.html">Novidades</a>
                     </li>
                 </ul>
-                <div class="cart-icon-container">
-                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
-                        <i class="bi bi-cart3"></i>
-                        <span class="cart-badge">0</span>
-                    </button>
-                </div>
             </div>
         </div>
     </nav>
@@ -280,7 +287,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row">
+            <div class="row text-center text-md-start">
                 <div class="col-md-4 mb-4">
                     <h5>Supermercado Rigonato</h5>
                     <p>Oferecendo os melhores produtos com qualidade e preço justo desde 1990.</p>
@@ -313,58 +320,16 @@
     <script src="js/script.js"></script>
     
     <script>
-        // Filtros para produtos do açougue
+        // Configuração específica para a página do açougue
         document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('[data-filter]');
+            // Carrega os produtos do açougue
+            loadSectionProducts();
             
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active de todos os botões
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Adiciona active no botão clicado
-                    this.classList.add('active');
-                    
-                    const filter = this.getAttribute('data-filter');
-                    filterProducts(filter);
-                });
-            });
+            // Atualiza o badge do carrinho
+            updateCartBadge();
         });
 
-        function filterProducts(filter) {
-            const products = document.querySelectorAll('.product-card');
-            
-            products.forEach(product => {
-                const category = product.getAttribute('data-category');
-                
-                if (filter === 'all' || category === filter) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
-            });
-        }
-
-        // Modifique a função createProductCard para incluir data-category
-        function createProductCard(product) {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.setAttribute('data-category', product.category || 'all');
-            card.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" class="product-img">
-                <div class="p-3">
-                    <h6 class="mb-2">${product.name}</h6>
-                    <div class="product-price mb-2">R$ ${product.price.toFixed(2)}</div>
-                    <div class="product-category mb-2">
-                        <small class="text-muted">${getCategoryName(product.category)}</small>
-                    </div>
-                    <button class="btn btn-add-cart" data-id="${product.id}">
-                        Adicionar ao Carrinho
-                    </button>
-                </div>
-            `;
-            return card;
-        }
-
+        // Função específica para obter nome da categoria no açougue
         function getCategoryName(category) {
             const categories = {
                 'bovina': 'Bovina',
