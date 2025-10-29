@@ -1,7 +1,6 @@
 // Produtos de exemplo para cada seção
 const products = {
     padaria: [
-<<<<<<< HEAD
         { id: 1, name: "Pão Francês", price: 0.50, image: "img/produtos/padaria/1.jpg", category: "padaria" },
         { id: 2, name: "Bolo de Chocolate", price: 12.90, image: "img/produtos/padaria/2.jpg", category: "padaria" },
         { id: 3, name: "Pão de Queijo", price: 8.50, image: "img/produtos/padaria/3.jpg", category: "padaria" },
@@ -21,27 +20,6 @@ const products = {
         { id: 13, name: "Alface", price: 2.90, image: "img/produtos/hortifruti/alface.jfif", category: "hortifruti" },
         { id: 14, name: "Tomate", price: 5.90, image: "img/produtos/hortifruti/tomate.jpg", category: "hortifruti" },
         { id: 15, name: "Cenoura", price: 3.50, image: "img/produtos/hortifruti/cenoura.jfif", category: "hortifruti" }
-=======
-        { id: 1, name: "Pão Francês", price: 0.50, image: "img/produtos/Pao-frances.jpg", category: "padaria" },
-        { id: 2, name: "Bolo de Chocolate", price: 12.90, image: "img/produtos/bolo.jpg", category: "padaria" },
-        { id: 3, name: "Pão de Queijo", price: 8.50, image: "img/produtos/pao-quijo.jfif", category: "padaria" },
-        { id: 4, name: "Croissant", price: 4.50, image: "img/produtos/croissant.jpg", category: "padaria" },
-        { id: 5, name: "Baguete", price: 3.20, image: "img/produtos/baquete.jpeg", category: "padaria" }
-    ],
-    acougue: [
-        { id: 6, name: "Picanha", price: 49.90, image: "img/produtos/picanha.jpg", category: "bovina" },
-        { id: 7, name: "Alcatra", price: 32.90, image: "img/produtos/alcatra.jpg", category: "bovina" },
-        { id: 8, name: "Costela", price: 28.50, image: "img/produtos/costela.jpeg", category: "bovina" },
-        { id: 9, name: "Frango Inteiro", price: 15.90, image: "img/produtos/frango.jpg", category: "frango" },
-        { id: 10, name: "Linguiça", price: 18.90, image: "img/produtos/linguiça.jpg", category: "linguiças" }
-    ],
-    hortifruti: [
-        { id: 11, name: "Maçã", price: 6.90, image: "img/produtos/maca.jpg", category: "hortifruti" },
-        { id: 12, name: "Banana", price: 4.50, image: "img/produtos/banana.jfif", category: "hortifruti" },
-        { id: 13, name: "Alface", price: 2.90, image: "img/produtos/alface.jfif", category: "hortifruti" },
-        { id: 14, name: "Tomate", price: 5.90, image: "img/produtos/tomate.jpg", category: "hortifruti" },
-        { id: 15, name: "Cenoura", price: 3.50, image: "img/produtos/cenoura.jfif", category: "hortifruti" }
->>>>>>> e08af36b347950f412a30c2e9fa8ef8f0065310a
     ],
     mercearia: [
         { id: 16, name: "Arroz 5kg", price: 24.90, image: "img/produtos/mercearia/arroz.jpeg", category: "mercearia" },
