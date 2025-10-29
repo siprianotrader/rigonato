@@ -1,27 +1,7 @@
+
 // Produtos de exemplo para cada seção
 const products = {
     padaria: [
-<<<<<<< HEAD
-        { id: 1, name: "Pão Francês", price: 0.50, image: "img/produtos/padaria/1.jpg", category: "padaria" },
-        { id: 2, name: "Bolo de Chocolate", price: 12.90, image: "img/produtos/padaria/2.jpg", category: "padaria" },
-        { id: 3, name: "Pão de Queijo", price: 8.50, image: "img/produtos/padaria/3.jpg", category: "padaria" },
-        { id: 4, name: "Croissant", price: 4.50, image: "img/produtos/padaria/4.jpg", category: "padaria" },
-        { id: 5, name: "Baguete", price: 3.20, image: "img/produtos/padaria/5.jpg", category: "padaria" }
-    ],
-    acougue: [
-        { id: 6, name: "Picanha", price: 49.90, image: "img/produtos/açougue/bovina/picanha.jpg", category: "bovina" },
-        { id: 7, name: "Alcatra", price: 32.90, image: "img/produtos/açougue/bovina/alcatra.jpg", category: "bovina" },
-        { id: 8, name: "Costela", price: 28.50, image: "img/produtos/açougue/bovina/costela.jpeg", category: "bovina" },
-        { id: 9, name: "Frango Inteiro", price: 15.90, image: "img/produtos/açougue/aves/frango.jpg", category: "frango" },
-        { id: 10, name: "Linguiça", price: 18.90, image: "img/produtos/açougue/linguiça/linguiça.jpg", category: "linguiças" }
-    ],
-    hortifruti: [
-        { id: 11, name: "Maçã", price: 6.90, image: "img/produtos/hortifruti/maca.jpg", category: "hortifruti" },
-        { id: 12, name: "Banana", price: 4.50, image: "img/produtos/hortifruti/banana.jpg", category: "hortifruti" },
-        { id: 13, name: "Alface", price: 2.90, image: "img/produtos/hortifruti/alface.jfif", category: "hortifruti" },
-        { id: 14, name: "Tomate", price: 5.90, image: "img/produtos/hortifruti/tomate.jpg", category: "hortifruti" },
-        { id: 15, name: "Cenoura", price: 3.50, image: "img/produtos/hortifruti/cenoura.jfif", category: "hortifruti" }
-=======
         { id: 1, name: "Pão Francês", price: 0.50, image: "img/produtos/Pao-frances.jpg", category: "padaria" },
         { id: 2, name: "Bolo de Chocolate", price: 12.90, image: "img/produtos/bolo.jpg", category: "padaria" },
         { id: 3, name: "Pão de Queijo", price: 8.50, image: "img/produtos/pao-quijo.jfif", category: "padaria" },
@@ -29,11 +9,11 @@ const products = {
         { id: 5, name: "Baguete", price: 3.20, image: "img/produtos/baquete.jpeg", category: "padaria" }
     ],
     acougue: [
-        { id: 6, name: "Picanha", price: 49.90, image: "img/produtos/picanha.jpg", category: "bovina" },
-        { id: 7, name: "Alcatra", price: 32.90, image: "img/produtos/alcatra.jpg", category: "bovina" },
-        { id: 8, name: "Costela", price: 28.50, image: "img/produtos/costela.jpeg", category: "bovina" },
-        { id: 9, name: "Frango Inteiro", price: 15.90, image: "img/produtos/frango.jpg", category: "frango" },
-        { id: 10, name: "Linguiça", price: 18.90, image: "img/produtos/linguiça.jpg", category: "linguiças" }
+        { id: 6, name: "Picanha", price: 49.90, image: "img/produtos/picanha.jpg", category: "acougue" },
+        { id: 7, name: "Alcatra", price: 32.90, image: "img/produtos/alcatra.jpg", category: "acougue" },
+        { id: 8, name: "Costela", price: 28.50, image: "img/produtos/costela.jpeg", category: "acougue" },
+        { id: 9, name: "Frango Inteiro", price: 15.90, image: "img/produtos/frango.jpg", category: "acougue" },
+        { id: 10, name: "Linguiça", price: 18.90, image: "img/produtos/linguiça.jpg", category: "acougue" }
     ],
     hortifruti: [
         { id: 11, name: "Maçã", price: 6.90, image: "img/produtos/maca.jpg", category: "hortifruti" },
@@ -41,7 +21,6 @@ const products = {
         { id: 13, name: "Alface", price: 2.90, image: "img/produtos/alface.jfif", category: "hortifruti" },
         { id: 14, name: "Tomate", price: 5.90, image: "img/produtos/tomate.jpg", category: "hortifruti" },
         { id: 15, name: "Cenoura", price: 3.50, image: "img/produtos/cenoura.jfif", category: "hortifruti" }
->>>>>>> e08af36b347950f412a30c2e9fa8ef8f0065310a
     ],
     mercearia: [
         { id: 16, name: "Arroz 5kg", price: 24.90, image: "img/produtos/mercearia/arroz.jpeg", category: "mercearia" },
@@ -75,11 +54,6 @@ const products = {
 
 // Carrinho de compras
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-// Função para formatar preço com vírgula (para exibição)
-function formatPrice(price) {
-    return price.toFixed(2).replace('.', ',');
-}
 
 // Inicialização da página
 document.addEventListener('DOMContentLoaded', function() {
@@ -123,11 +97,6 @@ function initSectionsCarousel() {
     let visibleCards = getVisibleCardsCount();
     const totalCards = cards.length;
     let autoPlayInterval;
-    
-    // No desktop, força 4 cards visíveis
-    if (window.innerWidth >= 992) {
-        visibleCards = 4;
-    }
     
     function startAutoPlay() {
         if (autoPlayInterval) clearInterval(autoPlayInterval);
@@ -198,12 +167,7 @@ function initSectionsCarousel() {
     }
     
     window.addEventListener('resize', function() {
-        if (window.innerWidth >= 992) {
-            visibleCards = 4;
-        } else {
-            visibleCards = getVisibleCardsCount();
-        }
-        
+        visibleCards = getVisibleCardsCount();
         if (currentPosition > totalCards - visibleCards) {
             currentPosition = Math.max(0, totalCards - visibleCards);
         }
@@ -238,20 +202,14 @@ function loadSectionProducts() {
     const pageName = path.split('/').pop().replace('.html', '');
     
     if (products[pageName]) {
-        // Limpa o grid antes de adicionar produtos
-        productsGrid.innerHTML = '';
-        
         products[pageName].forEach(product => {
-            const productCard = createSectionProductCard(product);
+            const productCard = createProductCard(product);
             productsGrid.appendChild(productCard);
         });
-        
-        // Configura os filtros se existirem
-        setupFilterButtons();
     }
 }
 
-// Cria card de produto para homepage
+// Cria o card de produto
 function createProductCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card';
@@ -259,86 +217,13 @@ function createProductCard(product) {
         <img src="${product.image}" alt="${product.name}" class="product-img">
         <div class="p-3">
             <h6 class="mb-2 text-center">${product.name}</h6>
-            <div class="product-price mb-2 text-center">R$ ${formatPrice(product.price)}</div>
+            <div class="product-price mb-2 text-center">R$ ${product.price.toFixed(2)}</div>
             <button class="btn btn-add-cart" data-id="${product.id}">
                 Adicionar ao Carrinho
             </button>
         </div>
     `;
     return card;
-}
-
-// Cria card de produto para páginas de seção (com categorias)
-function createSectionProductCard(product) {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.setAttribute('data-category', product.category || 'all');
-    card.innerHTML = `
-        <img src="${product.image}" alt="${product.name}" class="product-img">
-        <div class="p-3">
-            <h6 class="mb-2">${product.name}</h6>
-            <div class="product-price mb-2">R$ ${formatPrice(product.price)}</div>
-            <div class="product-category mb-2">
-                <small class="text-muted">${getCategoryName(product.category)}</small>
-            </div>
-            <button class="btn btn-add-cart" data-id="${product.id}">
-                Adicionar ao Carrinho
-            </button>
-        </div>
-    `;
-    return card;
-}
-
-// Configura os botões de filtro para páginas de seção
-function setupFilterButtons() {
-    const filterButtons = document.querySelectorAll('[data-filter]');
-    if (!filterButtons.length) return;
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove active de todos os botões
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Adiciona active no botão clicado
-            this.classList.add('active');
-            
-            const filter = this.getAttribute('data-filter');
-            filterProducts(filter);
-        });
-    });
-}
-
-// Filtra os produtos nas páginas de seção
-function filterProducts(filter) {
-    const products = document.querySelectorAll('#products-grid .product-card');
-    if (!products.length) return;
-    
-    products.forEach(product => {
-        const category = product.getAttribute('data-category');
-        
-        if (filter === 'all' || category === filter) {
-            product.style.display = 'block';
-        } else {
-            product.style.display = 'none';
-        }
-    });
-}
-
-// Retorna o nome da categoria para exibição
-function getCategoryName(category) {
-    const categories = {
-        'bovina': 'Bovina',
-        'suina': 'Suína', 
-        'frango': 'Frango',
-        'linguiças': 'Linguiças',
-        'padaria': 'Padaria',
-        'acougue': 'Açougue',
-        'hortifruti': 'Hortifrúti',
-        'mercearia': 'Mercearia',
-        'racoes': 'Rações',
-        'bebidas': 'Bebidas',
-        'novidades': 'Novidades'
-    };
-    return categories[category] || 'Geral';
 }
 
 // Configura os eventos
@@ -463,7 +348,7 @@ function loadCartForCheckout() {
         cartItem.innerHTML = `
             <div class="cart-item-details">
                 <div class="fw-bold">${item.name}</div>
-                <div class="cart-item-price">R$ ${formatPrice(itemTotal)}</div>
+                <div class="cart-item-price">R$ ${(item.price * item.quantity).toFixed(2)}</div>
             </div>
             <div class="cart-item-quantity">
                 <div class="quantity-btn" data-id="${item.id}" data-action="decrease">-</div>
@@ -476,7 +361,7 @@ function loadCartForCheckout() {
     });
     
     if (cartTotalElement) {
-        cartTotalElement.textContent = `R$ ${formatPrice(total)}`;
+        cartTotalElement.textContent = `R$ ${total.toFixed(2)}`;
     }
     
     document.querySelectorAll('.quantity-btn').forEach(btn => {
@@ -560,9 +445,9 @@ ${addressInfo}
 ${formattedDate} às ${deliveryTime}
 
 *Itens do Pedido:*
-${cart.map(item => `- ${item.quantity}x ${item.name} - R$ ${formatPrice(item.price * item.quantity)}`).join('\n')}
+${cart.map(item => `- ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}`).join('\n')}
 
-*Total: R$ ${formatPrice(total)}*
+*Total: R$ ${total.toFixed(2)}*
 
 Obrigado pela preferência!`;
     

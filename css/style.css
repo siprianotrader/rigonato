@@ -31,7 +31,10 @@ body {
 .navbar {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     padding: 0.5rem 0;
+<<<<<<< HEAD
     background-color: #333;
+=======
+>>>>>>> e08af36b347950f412a30c2e9fa8ef8f0065310a
 }
 
 .navbar .container {
@@ -74,7 +77,11 @@ body {
     top: -8px;
     right: -5px;
     background-color: var(--accent-color);
+<<<<<<< HEAD
     color: rgb(252, 253, 253);
+=======
+    color: white;
+>>>>>>> e08af36b347950f412a30c2e9fa8ef8f0065310a
     border-radius: 50%;
     width: 20px;
     height: 20px;
@@ -295,11 +302,19 @@ body {
 }
 
 .product-img {
+<<<<<<< HEAD
     height: 200px;
     width: 200px;
     object-fit: contain;
     padding: 5px;
     background-color: #0611b346;
+=======
+    height: 160px;
+    width: 100%;
+    object-fit: contain;
+    padding: 10px;
+    background-color: #f8f9fa;
+>>>>>>> e08af36b347950f412a30c2e9fa8ef8f0065310a
 }
 
 .product-price {
