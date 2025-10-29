@@ -12,17 +12,30 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header (mesmo do index.html) -->
+    <!-- Header e Menu de Navegação -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="img/logo.png" alt="Supermercado Rigonato">
-            </a>
+            <!-- Hamburger Menu (visível apenas no mobile) -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
+            <!-- Logo (esquerda no desktop, centro no mobile) -->
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="Supermercado Rigonato">
+            </a>
+            
+            <!-- Carrinho (sempre na direita) -->
+            <div class="cart-icon-container">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                    <i class="bi bi-cart3"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+            </div>
+
+            <!-- Menu Colapsável (visível no desktop, colapsável no mobile) -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="padaria.html">Padaria</a>
                     </li>
@@ -44,13 +57,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="novidades.html">Novidades</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="sobrenos.html">Sobre Nós</a>
+                    </li>
                 </ul>
-                <div class="cart-icon-container">
-                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
-                        <i class="bi bi-cart3"></i>
-                        <span class="cart-badge">0</span>
-                    </button>
-                </div>
             </div>
         </div>
     </nav>
@@ -67,15 +77,15 @@
     <section class="about-content">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mx-auto">
+                <div class="col-lg-10 mx-auto">
                     <h2 class="mb-4">Sobre o Supermercado Rigonato</h2>
-                    <p class="mb-4">
+                    <p class="lead mb-5">
                         Fundado em 1990, o Supermercado Rigonato nasceu do sonho de oferecer à comunidade 
                         produtos de qualidade com preços justos. O que começou como um pequeno empório 
                         familiar transformou-se em uma referência em atendimento e variedade na região.
                     </p>
                     
-                    <h3 class="mb-3">Nossa Trajetória</h3>
+                    <h3 class="mb-4">Nossa Trajetória</h3>
                     <div class="history-timeline">
                         <div class="timeline-item">
                             <h5>1990 - A Fundação</h5>
@@ -129,12 +139,12 @@
                     </div>
                     
                     <div class="mt-5 p-4 bg-light rounded">
-                        <h4 class="mb-3">Missão e Visão</h4>
-                        <p class="mb-3">
+                        <h4 class="mb-4">Missão e Visão</h4>
+                        <p class="mb-4">
                             <strong>Missão:</strong> Oferecer produtos de qualidade com preços acessíveis, 
                             proporcionando uma experiência de compra diferenciada e atendimento personalizado.
                         </p>
-                        <p>
+                        <p class="mb-0">
                             <strong>Visão:</strong> Ser referência em comércio varejista, reconhecido pela 
                             excelência no atendimento e compromisso com a satisfação dos clientes.
                         </p>
@@ -144,10 +154,33 @@
         </div>
     </section>
 
-    <!-- Footer (mesmo do index.html) -->
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <!-- Conteúdo do footer igual ao do index.html -->
+            <div class="row text-center text-md-start">
+                <div class="col-md-4 mb-4">
+                    <h5>Supermercado Rigonato</h5>
+                    <p>Oferecendo os melhores produtos com qualidade e preço justo desde 1990.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Links Rápidos</h5>
+                    <div class="footer-links">
+                        <a href="sobrenos.html">Sobre Nós</a>
+                        <a href="#">Política de Privacidade</a>
+                        <a href="#">Termos de Uso</a>
+                        <a href="#">Contato</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contato</h5>
+                    <p><i class="bi bi-geo-alt"></i> Rua Exemplo, 123 - Centro</p>
+                    <p><i class="bi bi-telephone"></i> (69) 99395-9196</p>
+                    <p><i class="bi bi-clock"></i> Seg-Sáb: 7:30h - 19:30 | Dom: 7:30h - 13:00 h</p>
+                </div>
+            </div>
+            <div class="text-center pt-3 border-top">
+                <p>&copy; 2025 Supermercado Rigonato. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
 
@@ -155,5 +188,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- JavaScript Personalizado -->
     <script src="js/script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartBadge();
+        });
+    </script>
 </body>
 </html>
