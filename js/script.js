@@ -1,11 +1,11 @@
 // Produtos de exemplo para cada seção
 const products = {
     padaria: [
-        { id: 1, name: "Pão Francês", price: 0.50, image: "img/produtos/padaria/1.jpg", category: "padaria" },
-        { id: 2, name: "Bolo de Chocolate", price: 12.90, image: "img/produtos/padaria/2.jpg", category: "padaria" },
-        { id: 3, name: "Pão de Queijo", price: 8.50, image: "img/produtos/padaria/3.jpg", category: "padaria" },
-        { id: 4, name: "Croissant", price: 4.50, image: "img/produtos/padaria/4.jpg", category: "padaria" },
-        { id: 5, name: "Baguete", price: 3.20, image: "img/produtos/padaria/5.jpg", category: "padaria" }
+        { id: 1, name: "Pão Francês", price: 0.50, image: "img/produtos/padaria/Pao-frances.jpg", category: "padaria" },
+        { id: 2, name: "Bolo de Chocolate", price: 12.90, image: "img/produtos/padaria/bolo.jpg", category: "padaria" },
+        { id: 3, name: "Pão de Queijo", price: 8.50, image: "img/produtos/padaria/pao-quijo.jfif", category: "padaria" },
+        { id: 4, name: "Croissant", price: 4.50, image: "img/produtos/padaria/croissant.jpg", category: "padaria" },
+        { id: 5, name: "Baguete", price: 3.20, image: "img/produtos/padaria/baquete.jpeg", category: "padaria" }
     ],
     acougue: [
         { id: 6, name: "Picanha", price: 49.90, image: "img/produtos/açougue/bovina/picanha.jpg", category: "bovina" },
@@ -29,25 +29,25 @@ const products = {
         { id: 20, name: "Macarrão 500g", price: 3.90, image: "img/produtos/mercearia/maca.png", category: "mercearia" }
     ],
     racoes: [
-        { id: 21, name: "Ração Cães Adultos", price: 89.90, image: "img/logo.png", category: "racoes" },
-        { id: 22, name: "Ração Gatos", price: 65.90, image: "img/logo.png", category: "racoes" },
-        { id: 23, name: "Ração Filhotes", price: 72.50, image: "img/logo.png", category: "racoes" },
-        { id: 24, name: "Biscoito Cães", price: 12.90, image: "img/logo.png", category: "racoes" },
-        { id: 25, name: "Areia Gatos", price: 25.90, image: "img/logo.png", category: "racoes" }
+        { id: 21, name: "Ração Cães Adultos", price: 89.90, image: "img/icon/rg.png", category: "racoes" },
+        { id: 22, name: "Ração Gatos", price: 65.90, image: "img/icon/rg.png", category: "racoes" },
+        { id: 23, name: "Ração Filhotes", price: 72.50, image: "img/icon/rg.png", category: "racoes" },
+        { id: 24, name: "Biscoito Cães", price: 12.90, image: "img/icon/rg.png", category: "racoes" },
+        { id: 25, name: "Areia Gatos", price: 25.90, image: "img/icon/rg.png", category: "racoes" }
     ],
     bebidas: [
-        { id: 26, name: "Refrigerante 2L", price: 8.90, image: "img/logo.png", category: "bebidas" },
-        { id: 27, name: "Suco 1L", price: 6.50, image: "img/logo.png", category: "bebidas" },
-        { id: 28, name: "Cerveja Lata", price: 3.90, image: "img/logo.png", category: "bebidas" },
-        { id: 29, name: "Água 500ml", price: 2.50, image: "img/logo.png", category: "bebidas" },
-        { id: 30, name: "Energético", price: 9.90, image: "img/logo.png", category: "bebidas" }
+        { id: 26, name: "Refrigerante 2L", price: 8.90, image: "img/icon/rg.png", category: "bebidas" },
+        { id: 27, name: "Suco 1L", price: 6.50, image: "img/icon/rg.png", category: "bebidas" },
+        { id: 28, name: "Cerveja Lata", price: 3.90, image: "img/icon/rg.png", category: "bebidas" },
+        { id: 29, name: "Água 500ml", price: 2.50, image: "img/icon/rg.png", category: "bebidas" },
+        { id: 30, name: "Energético", price: 9.90, image: "img/icon/rg.png", category: "bebidas" }
     ],
     novidades: [
-        { id: 31, name: "Produto Orgânico", price: 12.90, image: "img/logo.png", category: "novidades" },
-        { id: 32, name: "Produto Sem Lactose", price: 15.90, image: "img/logo.png", category: "novidades" },
-        { id: 33, name: "Produto Vegano", price: 18.50, image: "img/logo.png", category: "novidades" },
-        { id: 34, name: "Produto Sem Glúten", price: 14.90, image: "img/logo.png", category: "novidades" },
-        { id: 35, name: "Produto Natural", price: 10.90, image: "img/logo.png", category: "novidades" }
+        { id: 31, name: "Produto Orgânico", price: 12.90, image: "img/icon/rg.png", category: "novidades" },
+        { id: 32, name: "Produto Sem Lactose", price: 15.90, image: "img/icon/rg.png", category: "novidades" },
+        { id: 33, name: "Produto Vegano", price: 18.50, image: "img/icon/rg.png", category: "novidades" },
+        { id: 34, name: "Produto Sem Glúten", price: 14.90, image: "img/icon/rg.png", category: "novidades" },
+        { id: 35, name: "Produto Natural", price: 10.90, image: "img/icon/rg.png", category: "novidades" }
     ]
 };
 
