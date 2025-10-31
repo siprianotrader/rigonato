@@ -8,11 +8,21 @@ const products = {
         { id: 5, name: "Baguete", price: 3.20, image: "img/produtos/padaria/baquete.jpeg", category: "padaria" }
     ],
     acougue: [
-        { id: 6, name: "Picanha", price: 49.90, image: "img/produtos/açougue/bovina/picanha.jpg", category: "bovina" },
-        { id: 7, name: "Alcatra", price: 32.90, image: "img/produtos/açougue/bovina/alcatra.jpg", category: "bovina" },
-        { id: 8, name: "Costela", price: 28.50, image: "img/produtos/açougue/bovina/costela.jpeg", category: "bovina" },
+        { id: 6, name: "Picanha", price: 74.99, image: "img/produtos/açougue/bovina/picanha.jpg", category: "bovina" },
+        { id: 7, name: "Alcatra", price: 41.99, image: "img/produtos/açougue/bovina/alcatra.jpg", category: "bovina" },
+        { id: 8, name: "Costela", price: 16.99, image: "img/produtos/açougue/bovina/costela.jpeg", category: "bovina" },
         { id: 9, name: "Frango Inteiro", price: 15.90, image: "img/produtos/açougue/aves/frango.jpg", category: "frango" },
-        { id: 10, name: "Linguiça", price: 18.90, image: "img/produtos/açougue/linguiça/linguiça.jpg", category: "linguiças" }
+        { id: 10, name: "Linguiça", price: 19.99, image: "img/produtos/açougue/linguiça/linguiça.jpg", category: "linguiças" },
+        { id: 11, name: "Filé Mignon", price: 42.99, image: "img/icon/rg.png", category: "bovina" },
+        { id: 12, name: "Contra Filé", price: 42.99, image: "img/icon/rg.png", category: "bovina" },
+        { id: 13, name: "Cabeça de Picanha", price: 49.99, image: "img/icon/rg.png", category: "bovina" },
+        { id: 14, name: "Coxão Mole", price: 36.99, image: "img/icon/rg.png", category: "bovina" },
+        { id: 15, name: "Patinho", price: 34.99, image: "img/icon/rg.png", category: "bovina" },
+        { id: 16, name: "Chã de Fora", price: 31.99, image: "img/icon/rg.png", category: "bovina" },
+        { id: 17, name: "Alcatrinha", price: 34.99, image: "img/icon/rg.png", category: "bovina" }
+        
+        
+        
     ],
     hortifruti: [
         { id: 11, name: "Maçã", price: 6.90, image: "img/produtos/hortifruti/maca.jpg", category: "hortifruti" },
