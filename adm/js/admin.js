@@ -340,94 +340,53 @@ function openSectionManager(section) {
                     <h5 class="modal-title">
                         <i class="bi bi-grid-3x3-gap"></i> 
                         Gerenciar ${section.charAt(0).toUpperCase() + section.slice(1)} 
-                        <span class="badge bg-light text-primary ms-2">${sectionProducts.length} produtos</span>
+                        <span class="badge bg-light text-primary">${sectionProducts.length} produtos</span>
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
                         <button class="btn btn-success" onclick="openProductModal(null, '${section}')">
                             <i class="bi bi-plus-circle"></i> Adicionar Novo Produto
                         </button>
-                        <div class="text-muted small">
-                            <i class="bi bi-info-circle"></i> Gerencie os produtos da seção
+                        <div class="text-muted">
+                            <i class="bi bi-info-circle"></i> Clique em um produto para editar
                         </div>
                     </div>
                     
-                    ${sectionProducts.length > 0 ? `
-                        <div class="table-responsive">
-                            <table class="table table-hover align-middle">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th width="60" class="text-center">Imagem</th>
-                                        <th>Produto</th>
-                                        <th>Categoria</th>
-                                        <th width="120" class="text-end">Preço</th>
-                                        <th width="200" class="text-center">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${sectionProducts.map(product => `
-                                        <tr>
-                                            <td class="text-center">
-                                                <img src="${product.image}" 
-                                                     alt="${product.name}" 
-                                                     class="rounded border" 
-                                                     style="width: 50px; height: 50px; object-fit: cover;"
-                                                     onerror="this.src='../img/icon/rg.png'">
-                                            </td>
-                                            <td>
-                                                <div class="fw-semibold">${product.name}</div>
-                                                <small class="text-muted">ID: ${product.id}</small>
-                                            </td>
-                                            <td>
-                                                <span class="badge bg-secondary">${product.category}</span>
-                                            </td>
-                                            <td class="text-end">
-                                                <span class="fw-bold text-success">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
-                                            </td>
-                                            <td class="text-center">
-                                                <div class="btn-group btn-group-sm" role="group">
-                                                    <button type="button" class="btn btn-outline-primary" 
-                                                            onclick="openProductModal(${product.id}, '${section}')"
-                                                            title="Editar produto">
-                                                        <i class="bi bi-pencil"></i> Editar
-                                                    </button>
-                                                    <button type="button" class="btn btn-outline-danger" 
-                                                            onclick="deleteProduct(${product.id})"
-                                                            title="Excluir produto">
-                                                        <i class="bi bi-trash"></i> Excluir
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    `).join('')}
-                                </tbody>
-                                <tfoot class="table-light">
-                                    <tr>
-                                        <td colspan="3" class="text-end fw-semibold">Total:</td>
-                                        <td class="text-end fw-bold text-success">
-                                            R$ ${sectionProducts.reduce((sum, product) => sum + product.price, 0).toFixed(2).replace('.', ',')}
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    ` : `
-                        <div class="text-center py-5">
-                            <i class="bi bi-inbox display-1 text-muted"></i>
-                            <h5 class="text-muted mt-3">Nenhum produto encontrado</h5>
-                            <p class="text-muted">Clique no botão acima para adicionar seu primeiro produto</p>
-                        </div>
-                    `}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        <i class="bi bi-x-circle"></i> Fechar
-                    </button>
-                    <div class="text-muted small">
-                        ${sectionProducts.length} produto(s) listado(s)
+                    <div class="row g-3" id="productsGrid">
+                        ${sectionProducts.map(product => `
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card product-card h-100" onclick="openProductModal(${product.id}, '${section}')" style="cursor: pointer;">
+                                    <div class="card-body text-center">
+                                        <div class="product-image-container mb-3">
+                                            <img src="${product.image}" alt="${product.name}" 
+                                                 class="product-image" 
+                                                 onerror="this.src='../img/icon/rg.png'">
+                                        </div>
+                                        <h6 class="card-title">${product.name}</h6>
+                                        <div class="card-text">
+                                            <div class="fw-bold text-success">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
+                                            <small class="text-muted">${product.category}</small>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-transparent">
+                                        <button class="btn btn-sm btn-outline-danger w-100" 
+                                                onclick="event.stopPropagation(); deleteProduct(${product.id})">
+                                            <i class="bi bi-trash"></i> Excluir
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                        
+                        ${sectionProducts.length === 0 ? `
+                            <div class="col-12 text-center py-5">
+                                <i class="bi bi-inbox display-1 text-muted"></i>
+                                <h5 class="text-muted mt-3">Nenhum produto encontrado</h5>
+                                <p class="text-muted">Clique no botão acima para adicionar seu primeiro produto</p>
+                            </div>
+                        ` : ''}
                     </div>
                 </div>
             </div>

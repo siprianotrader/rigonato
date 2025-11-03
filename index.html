@@ -18,6 +18,49 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 
 </head>
+   
+    <!-- Sistema de Sincronização em Tempo Real -->
+<script>
+// Verifica atualizações a cada segundo
+setInterval(function() {
+    const lastUpdate = localStorage.getItem('productsLastUpdate');
+    const currentTime = Date.now().toString();
+    
+    // Se detectar que houve uma atualização recente (últimos 5 segundos)
+    if (lastUpdate && (currentTime - parseInt(lastUpdate)) < 5000) {
+        console.log('Atualização detectada, recarregando produtos...');
+        
+        // Recarrega os produtos
+        if (typeof loadProducts === 'function') {
+            loadProducts();
+        }
+        if (typeof loadSectionProducts === 'function') {
+            loadSectionProducts();
+        }
+        
+        // Limpa o timestamp para evitar recarregamentos desnecessários
+        localStorage.removeItem('productsLastUpdate');
+    }
+}, 1000);
+
+// Também escuta por mudanças no localStorage
+window.addEventListener('storage', function(e) {
+    if (e.key === 'rigonatoProducts' || e.key === 'productsLastUpdate') {
+        console.log('Mudança nos produtos detectada via storage event');
+        
+        // Pequeno delay para garantir que os dados foram salvos
+        setTimeout(function() {
+            if (typeof loadProducts === 'function') {
+                loadProducts();
+            }
+            if (typeof loadSectionProducts === 'function') {
+                loadSectionProducts();
+            }
+        }, 100);
+    }
+});
+</script>
+
 <body>
     <!-- Header e Menu de Navegação -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">

@@ -20,44 +20,41 @@ const products = {
         { id: 15, name: "Patinho", price: 34.99, image: "img/icon/rg.png", category: "bovina" },
         { id: 16, name: "Chã de Fora", price: 31.99, image: "img/icon/rg.png", category: "bovina" },
         { id: 17, name: "Alcatrinha", price: 34.99, image: "img/icon/rg.png", category: "bovina" }
-        
-        
-        
     ],
     hortifruti: [
-        { id: 11, name: "Maçã", price: 6.90, image: "img/produtos/hortifruti/maca.jpg", category: "hortifruti" },
-        { id: 12, name: "Banana", price: 4.50, image: "img/produtos/hortifruti/banana.jpg", category: "hortifruti" },
-        { id: 13, name: "Alface", price: 2.90, image: "img/produtos/hortifruti/alface.jfif", category: "hortifruti" },
-        { id: 14, name: "Tomate", price: 5.90, image: "img/produtos/hortifruti/tomate.jpg", category: "hortifruti" },
-        { id: 15, name: "Cenoura", price: 3.50, image: "img/produtos/hortifruti/cenoura.jfif", category: "hortifruti" }
+        { id: 18, name: "Maçã", price: 6.90, image: "img/produtos/hortifruti/maca.jpg", category: "hortifruti" },
+        { id: 19, name: "Banana", price: 4.50, image: "img/produtos/hortifruti/banana.jpg", category: "hortifruti" },
+        { id: 20, name: "Alface", price: 2.90, image: "img/produtos/hortifruti/alface.jfif", category: "hortifruti" },
+        { id: 21, name: "Tomate", price: 5.90, image: "img/produtos/hortifruti/tomate.jpg", category: "hortifruti" },
+        { id: 22, name: "Cenoura", price: 3.50, image: "img/produtos/hortifruti/cenoura.jfif", category: "hortifruti" }
     ],
     mercearia: [
-        { id: 16, name: "Arroz 5kg", price: 24.90, image: "img/produtos/mercearia/arroz.jpeg", category: "mercearia" },
-        { id: 17, name: "Feijão 1kg", price: 8.90, image: "img/produtos/mercearia/feijao.jfif", category: "mercearia" },
-        { id: 18, name: "Açúcar 2kg", price: 4.50, image: "img/produtos/mercearia/açucar.jpg", category: "mercearia" },
-        { id: 19, name: "Óleo 900ml", price: 7.90, image: "img/produtos/mercearia/oleo.png", category: "mercearia" },
-        { id: 20, name: "Macarrão 500g", price: 3.90, image: "img/produtos/mercearia/maca.png", category: "mercearia" }
+        { id: 23, name: "Arroz 5kg", price: 24.90, image: "img/produtos/mercearia/arroz.jpeg", category: "mercearia" },
+        { id: 24, name: "Feijão 1kg", price: 8.90, image: "img/produtos/mercearia/feijao.jfif", category: "mercearia" },
+        { id: 25, name: "Açúcar 2kg", price: 4.50, image: "img/produtos/mercearia/açucar.jpg", category: "mercearia" },
+        { id: 26, name: "Óleo 900ml", price: 7.90, image: "img/produtos/mercearia/oleo.png", category: "mercearia" },
+        { id: 27, name: "Macarrão 500g", price: 3.90, image: "img/produtos/mercearia/maca.png", category: "mercearia" }
     ],
     racoes: [
-        { id: 21, name: "Ração Cães Adultos", price: 89.90, image: "img/icon/rg.png", category: "racoes" },
-        { id: 22, name: "Ração Gatos", price: 65.90, image: "img/icon/rg.png", category: "racoes" },
-        { id: 23, name: "Ração Filhotes", price: 72.50, image: "img/icon/rg.png", category: "racoes" },
-        { id: 24, name: "Biscoito Cães", price: 12.90, image: "img/icon/rg.png", category: "racoes" },
-        { id: 25, name: "Areia Gatos", price: 25.90, image: "img/icon/rg.png", category: "racoes" }
+        { id: 28, name: "Ração Cães Adultos", price: 89.90, image: "img/icon/rg.png", category: "racoes" },
+        { id: 29, name: "Ração Gatos", price: 65.90, image: "img/icon/rg.png", category: "racoes" },
+        { id: 30, name: "Ração Filhotes", price: 72.50, image: "img/icon/rg.png", category: "racoes" },
+        { id: 31, name: "Biscoito Cães", price: 12.90, image: "img/icon/rg.png", category: "racoes" },
+        { id: 32, name: "Areia Gatos", price: 25.90, image: "img/icon/rg.png", category: "racoes" }
     ],
     bebidas: [
-        { id: 26, name: "Refrigerante 2L", price: 8.90, image: "img/icon/rg.png", category: "bebidas" },
-        { id: 27, name: "Suco 1L", price: 6.50, image: "img/icon/rg.png", category: "bebidas" },
-        { id: 28, name: "Cerveja Lata", price: 3.90, image: "img/icon/rg.png", category: "bebidas" },
-        { id: 29, name: "Água 500ml", price: 2.50, image: "img/icon/rg.png", category: "bebidas" },
-        { id: 30, name: "Energético", price: 9.90, image: "img/icon/rg.png", category: "bebidas" }
+        { id: 33, name: "Refrigerante 2L", price: 8.90, image: "img/icon/rg.png", category: "bebidas" },
+        { id: 34, name: "Suco 1L", price: 6.50, image: "img/icon/rg.png", category: "bebidas" },
+        { id: 35, name: "Cerveja Lata", price: 3.90, image: "img/icon/rg.png", category: "bebidas" },
+        { id: 36, name: "Água 500ml", price: 2.50, image: "img/icon/rg.png", category: "bebidas" },
+        { id: 37, name: "Energético", price: 9.90, image: "img/icon/rg.png", category: "bebidas" }
     ],
     novidades: [
-        { id: 31, name: "Produto Orgânico", price: 12.90, image: "img/icon/rg.png", category: "novidades" },
-        { id: 32, name: "Produto Sem Lactose", price: 15.90, image: "img/icon/rg.png", category: "novidades" },
-        { id: 33, name: "Produto Vegano", price: 18.50, image: "img/icon/rg.png", category: "novidades" },
-        { id: 34, name: "Produto Sem Glúten", price: 14.90, image: "img/icon/rg.png", category: "novidades" },
-        { id: 35, name: "Produto Natural", price: 10.90, image: "img/icon/rg.png", category: "novidades" }
+        { id: 38, name: "Produto Orgânico", price: 12.90, image: "img/icon/rg.png", category: "novidades" },
+        { id: 39, name: "Produto Sem Lactose", price: 15.90, image: "img/icon/rg.png", category: "novidades" },
+        { id: 40, name: "Produto Vegano", price: 18.50, image: "img/icon/rg.png", category: "novidades" },
+        { id: 41, name: "Produto Sem Glúten", price: 14.90, image: "img/icon/rg.png", category: "novidades" },
+        { id: 42, name: "Produto Natural", price: 10.90, image: "img/icon/rg.png", category: "novidades" }
     ]
 };
 
@@ -69,8 +66,195 @@ function formatPrice(price) {
     return price.toFixed(2).replace('.', ',');
 }
 
+// =============================================
+// SISTEMA DE GERENCIAMENTO DE PRODUTOS
+// =============================================
+
+// Sistema de gerenciamento de produtos
+const adminProducts = {
+    // Carrega todos os produtos
+    loadProducts: function() {
+        const savedProducts = localStorage.getItem('rigonatoProducts');
+        if (savedProducts) {
+            return JSON.parse(savedProducts);
+        }
+        
+        // Se não existir no localStorage, usa os produtos padrão e salva
+        this.saveProducts(products);
+        return products;
+    },
+    
+    // Salva todos os produtos
+    saveProducts: function(productsData) {
+        localStorage.setItem('rigonatoProducts', JSON.stringify(productsData));
+        // Atualiza a variável global products
+        Object.keys(productsData).forEach(section => {
+            products[section] = productsData[section];
+        });
+        return true;
+    },
+    
+    // Adiciona um novo produto
+    addProduct: function(section, productData) {
+        const allProducts = this.loadProducts();
+        
+        // Gera um ID único
+        const newId = this.generateProductId(allProducts);
+        
+        const newProduct = {
+            id: newId,
+            name: productData.name,
+            price: parseFloat(productData.price),
+            image: productData.image,
+            category: productData.category
+        };
+        
+        if (!allProducts[section]) {
+            allProducts[section] = [];
+        }
+        
+        allProducts[section].push(newProduct);
+        this.saveProducts(allProducts);
+        return newProduct;
+    },
+    
+    // Edita um produto existente
+    editProduct: function(productId, productData) {
+        const allProducts = this.loadProducts();
+        let productFound = false;
+        
+        for (const section in allProducts) {
+            const productIndex = allProducts[section].findIndex(p => p.id === productId);
+            if (productIndex !== -1) {
+                const oldProduct = allProducts[section][productIndex];
+                
+                // Se mudou de seção, remove da seção antiga e adiciona na nova
+                if (section !== productData.section) {
+                    allProducts[section].splice(productIndex, 1);
+                    
+                    // Adiciona na nova seção
+                    if (!allProducts[productData.section]) {
+                        allProducts[productData.section] = [];
+                    }
+                    allProducts[productData.section].push({
+                        ...oldProduct,
+                        name: productData.name,
+                        price: parseFloat(productData.price),
+                        image: productData.image,
+                        category: productData.category
+                    });
+                } else {
+                    // Atualiza na mesma seção
+                    allProducts[section][productIndex] = {
+                        ...oldProduct,
+                        name: productData.name,
+                        price: parseFloat(productData.price),
+                        image: productData.image,
+                        category: productData.category
+                    };
+                }
+                
+                productFound = true;
+                break;
+            }
+        }
+        
+        if (productFound) {
+            this.saveProducts(allProducts);
+            return true;
+        }
+        
+        return false;
+    },
+    
+    // Remove um produto
+    removeProduct: function(productId) {
+        const allProducts = this.loadProducts();
+        let productFound = false;
+        
+        for (const section in allProducts) {
+            const productIndex = allProducts[section].findIndex(p => p.id === productId);
+            if (productIndex !== -1) {
+                allProducts[section].splice(productIndex, 1);
+                productFound = true;
+                break;
+            }
+        }
+        
+        if (productFound) {
+            this.saveProducts(allProducts);
+            return true;
+        }
+        
+        return false;
+    },
+    
+    // Busca um produto pelo ID
+    getProduct: function(productId) {
+        const allProducts = this.loadProducts();
+        
+        for (const section in allProducts) {
+            const product = allProducts[section].find(p => p.id === productId);
+            if (product) {
+                return { ...product, section };
+            }
+        }
+        
+        return null;
+    },
+    
+    // Gera um ID único para novo produto
+    generateProductId: function(allProducts) {
+        let maxId = 0;
+        
+        for (const section in allProducts) {
+            allProducts[section].forEach(product => {
+                if (product.id > maxId) {
+                    maxId = product.id;
+                }
+            });
+        }
+        
+        return maxId + 1;
+    },
+    
+    // Atualiza todas as exibições de produtos na página
+    refreshProductDisplays: function() {
+        // Força o recarregamento dos produtos do localStorage
+        const currentProducts = this.loadProducts();
+        
+        // Recarrega produtos na homepage se estiver nela
+        if (document.querySelector('.product-carousel')) {
+            const carousels = document.querySelectorAll('.product-carousel');
+            carousels.forEach(carousel => carousel.innerHTML = '');
+            loadProducts();
+        }
+        
+        // Recarrega produtos em páginas de seção
+        if (document.getElementById('products-grid')) {
+            loadSectionProducts();
+        }
+        
+        // Dispara um evento customizado para forçar atualização
+        window.dispatchEvent(new CustomEvent('productsUpdated'));
+    }
+};
+
+// Função para inicializar produtos no localStorage
+function initializeProducts() {
+    if (!localStorage.getItem('rigonatoProducts')) {
+        localStorage.setItem('rigonatoProducts', JSON.stringify(products));
+    }
+}
+
+// =============================================
+// FUNÇÕES PRINCIPAIS DO SITE
+// =============================================
+
 // Inicialização da página
 document.addEventListener('DOMContentLoaded', function() {
+    initializeProducts();
+    
     // Carrega os produtos nas seções da homepage
     if (document.querySelector('.product-carousel')) {
         loadProducts();
@@ -89,7 +273,105 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Configura os eventos
     setupEventListeners();
+    
+    // Inicializa o sistema de sincronização
+    initializeSyncSystem();
 });
+
+// Carrega os produtos nas seções da homepage
+function loadProducts() {
+    // SEMPRE carrega os produtos mais recentes do localStorage
+    const currentProducts = adminProducts.loadProducts();
+    
+    for (const section in currentProducts) {
+        const carousel = document.getElementById(`${section}-carousel`);
+        if (carousel) {
+            // Limpa o carousel antes de adicionar
+            carousel.innerHTML = '';
+            const limitedProducts = currentProducts[section].slice(0, 5);
+            limitedProducts.forEach(product => {
+                const productCard = createProductCard(product);
+                carousel.appendChild(productCard);
+            });
+        }
+    }
+}
+
+// Carrega produtos em páginas de seção específica
+function loadSectionProducts() {
+    const productsGrid = document.getElementById('products-grid');
+    if (!productsGrid) return;
+    
+    const path = window.location.pathname;
+    const pageName = path.split('/').pop().replace('.html', '');
+    
+    // SEMPRE carrega os produtos mais recentes do localStorage
+    const currentProducts = adminProducts.loadProducts();
+    
+    if (currentProducts[pageName]) {
+        // Limpa o grid antes de adicionar produtos
+        productsGrid.innerHTML = '';
+        
+        currentProducts[pageName].forEach(product => {
+            const productCard = createSectionProductCard(product);
+            productsGrid.appendChild(productCard);
+        });
+        
+        // Configura os filtros se existirem
+        setupFilterButtons();
+    }
+}
+
+// =============================================
+// SISTEMA DE SINCRONIZAÇÃO EM TEMPO REAL
+// =============================================
+
+function initializeSyncSystem() {
+    // Ouvinte para detectar mudanças no localStorage (entre abas)
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'rigonatoProducts' || e.key === 'productsLastUpdate') {
+            console.log('Mudanças detectadas nos produtos, atualizando...');
+            setTimeout(() => {
+                adminProducts.refreshProductDisplays();
+            }, 100);
+        }
+    });
+
+    // Ouvinte para eventos customizados de atualização
+    window.addEventListener('productsUpdated', function() {
+        console.log('Produtos atualizados via evento, recarregando exibição...');
+        // Força a atualização das exibições
+        if (document.querySelector('.product-carousel')) {
+            loadProducts();
+        }
+        if (document.getElementById('products-grid')) {
+            loadSectionProducts();
+        }
+    });
+
+    // Verifica por atualizações a cada segundo
+    setInterval(function() {
+        const lastUpdate = localStorage.getItem('productsLastUpdate');
+        const currentTime = Date.now();
+        
+        // Se detectar que houve uma atualização recente (últimos 3 segundos)
+        if (lastUpdate && (currentTime - parseInt(lastUpdate)) < 3000) {
+            console.log('Atualização recente detectada, recarregando produtos...');
+            adminProducts.refreshProductDisplays();
+            
+            // Limpa o timestamp para evitar recarregamentos desnecessários
+            localStorage.removeItem('productsLastUpdate');
+        }
+    }, 1000);
+
+    // Inicializa o último estado conhecido
+    const initialProducts = JSON.stringify(adminProducts.loadProducts());
+    localStorage.setItem('lastKnownProducts', initialProducts);
+}
+
+// =============================================
+// FUNÇÕES EXISTENTES (MANTIDAS)
+// =============================================
 
 // Inicializa o carousel de seções
 function initSectionsCarousel() {
@@ -201,42 +483,6 @@ function initSectionsCarousel() {
     
     updateCarousel();
     startAutoPlay();
-}
-
-// Carrega os produtos nas seções da homepage
-function loadProducts() {
-    for (const section in products) {
-        const carousel = document.getElementById(`${section}-carousel`);
-        if (carousel) {
-            const limitedProducts = products[section].slice(0, 5);
-            limitedProducts.forEach(product => {
-                const productCard = createProductCard(product);
-                carousel.appendChild(productCard);
-            });
-        }
-    }
-}
-
-// Carrega produtos em páginas de seção específica
-function loadSectionProducts() {
-    const productsGrid = document.getElementById('products-grid');
-    if (!productsGrid) return;
-    
-    const path = window.location.pathname;
-    const pageName = path.split('/').pop().replace('.html', '');
-    
-    if (products[pageName]) {
-        // Limpa o grid antes de adicionar produtos
-        productsGrid.innerHTML = '';
-        
-        products[pageName].forEach(product => {
-            const productCard = createSectionProductCard(product);
-            productsGrid.appendChild(productCard);
-        });
-        
-        // Configura os filtros se existirem
-        setupFilterButtons();
-    }
 }
 
 // Cria card de produto para homepage
@@ -369,9 +615,12 @@ function setupEventListeners() {
 
 // Adiciona produto ao carrinho
 function addToCart(productId) {
+    // Busca o produto nos dados atualizados
+    const currentProducts = adminProducts.loadProducts();
     let productToAdd = null;
-    for (const section in products) {
-        const product = products[section].find(p => p.id === productId);
+    
+    for (const section in currentProducts) {
+        const product = currentProducts[section].find(p => p.id === productId);
         if (product) {
             productToAdd = product;
             break;
