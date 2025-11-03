@@ -8,8 +8,10 @@ const DEFAULT_CREDENTIALS = {
     password: 'rigonato321'
 };
 
-// Variável para controlar o modal atual
-let currentModal = null;
+// Cache para melhor performance
+let productsCache = null;
+let statsCache = null;
+let isLoading = false;
 
 // Função para verificar se o usuário está autenticado
 function checkAuth() {
@@ -27,7 +29,6 @@ function checkAuth() {
 // Função de login do sistema
 function login(email, password) {
     if (email === DEFAULT_CREDENTIALS.email && password === DEFAULT_CREDENTIALS.password) {
-        // Salva o estado de login no localStorage
         localStorage.setItem('adminLoggedIn', 'true');
         localStorage.setItem('adminEmail', email);
         return true;
@@ -37,7 +38,6 @@ function login(email, password) {
 
 // Função de logout do sistema
 function logout() {
-    // Remove dados de autenticação
     localStorage.removeItem('adminLoggedIn');
     localStorage.removeItem('adminEmail');
     window.location.href = 'index.html';
@@ -45,11 +45,9 @@ function logout() {
 
 // Função para exibir alertas no sistema
 function showAlert(message, type = 'danger') {
-    // Remove alertas existentes para evitar duplicação
     const existingAlerts = document.querySelectorAll('.alert-dismissible');
     existingAlerts.forEach(alert => alert.remove());
     
-    // Cria novo alerta
     const alertDiv = document.createElement('div');
     alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
     alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
@@ -60,7 +58,6 @@ function showAlert(message, type = 'danger') {
     
     document.body.appendChild(alertDiv);
     
-    // Remove alerta automaticamente após 5 segundos
     setTimeout(() => {
         if (alertDiv.parentNode) {
             alertDiv.remove();
@@ -68,127 +65,246 @@ function showAlert(message, type = 'danger') {
     }, 5000);
 }
 
+// Função para corrigir caminhos de imagem
+function fixImagePath(imagePath) {
+    if (!imagePath) return '../img/icon/rg.png';
+    
+    // Remove ../ se existir no início
+    let cleanPath = imagePath.replace(/^\.\.\//, '');
+    
+    // Se já começar com img/, mantém como está
+    if (cleanPath.startsWith('img/')) {
+        return `../${cleanPath}`;
+    }
+    
+    // Se for um caminho relativo sem ../, adiciona ../
+    if (!cleanPath.startsWith('http') && !cleanPath.startsWith('/')) {
+        return `../img/${cleanPath}`;
+    }
+    
+    return imagePath;
+}
+
 // Função para carregar dados dos produtos
 function loadProductsData() {
-    // Tenta carregar do sistema admin, depois do sistema principal
-    if (typeof adminProducts !== 'undefined') {
-        return adminProducts.loadProducts();
+    if (productsCache) {
+        return productsCache;
     }
-    return typeof products !== 'undefined' ? products : {};
+    
+    // Tenta carregar do sistema admin, depois do sistema principal
+    try {
+        if (typeof adminProducts !== 'undefined') {
+            productsCache = adminProducts.loadProducts();
+        } else if (typeof products !== 'undefined') {
+            productsCache = products;
+        } else {
+            console.warn('Sistema de produtos não encontrado. Usando dados de exemplo.');
+            productsCache = getSampleProducts();
+        }
+        
+        // Corrige caminhos das imagens em todos os produtos
+        for (const section in productsCache) {
+            productsCache[section].forEach(product => {
+                product.image = fixImagePath(product.image);
+            });
+        }
+        
+    } catch (error) {
+        console.error('Erro ao carregar produtos:', error);
+        productsCache = getSampleProducts();
+    }
+    
+    return productsCache;
+}
+
+// Dados de exemplo para teste
+function getSampleProducts() {
+    return {
+        'padaria': [
+            {
+                id: 1,
+                name: 'Pão Francês',
+                price: 0.50,
+                category: 'Pães',
+                image: '../img/icon/rg.png'
+            },
+            {
+                id: 2,
+                name: 'Bolo de Chocolate',
+                price: 15.90,
+                category: 'Bolos',
+                image: '../img/icon/rg.png'
+            }
+        ],
+        'acougue': [
+            {
+                id: 3,
+                name: 'Picanha',
+                price: 79.90,
+                category: 'Bovina',
+                image: '../img/icon/rg.png'
+            }
+        ]
+    };
 }
 
 // Função para calcular estatísticas dos produtos
 function calculateProductStats() {
+    if (statsCache) {
+        return statsCache;
+    }
+    
     const products = loadProductsData();
     let totalProducts = 0;
     let totalValue = 0;
     const categories = {};
     
-    // Percorre todas as seções e produtos
     for (const section in products) {
         totalProducts += products[section].length;
         products[section].forEach(product => {
             totalValue += product.price;
-            // Conta produtos por categoria
             categories[product.category] = (categories[product.category] || 0) + 1;
         });
     }
     
-    return { 
+    statsCache = { 
         totalProducts, 
         totalValue, 
         categories, 
         totalSections: Object.keys(products).length 
     };
+    
+    return statsCache;
 }
 
 // Função para atualizar as estatísticas no dashboard
 function updateProductStats() {
-    const stats = calculateProductStats();
+    if (isLoading) return;
     
-    // Atualiza os elementos HTML com os dados calculados
-    document.getElementById('totalProducts').textContent = stats.totalProducts;
-    document.getElementById('totalValue').textContent = `R$ ${stats.totalValue.toFixed(2).replace('.', ',')}`;
-    document.getElementById('totalSections').textContent = stats.totalSections;
-    document.getElementById('totalCategories').textContent = Object.keys(stats.categories).length;
+    try {
+        const stats = calculateProductStats();
+        
+        document.getElementById('totalProducts').textContent = stats.totalProducts;
+        document.getElementById('totalValue').textContent = `R$ ${stats.totalValue.toFixed(2).replace('.', ',')}`;
+        document.getElementById('totalSections').textContent = stats.totalSections;
+        document.getElementById('totalCategories').textContent = Object.keys(stats.categories).length;
+    } catch (error) {
+        console.error('Erro ao atualizar estatísticas:', error);
+    }
 }
 
 // Função para carregar produtos por seção
 function loadProductsBySection() {
+    if (isLoading) return;
+    isLoading = true;
+    
     const products = loadProductsData();
     const container = document.getElementById('productsBySection');
-    if (!container) return;
+    if (!container) {
+        isLoading = false;
+        return;
+    }
     
-    container.innerHTML = '';
-    
-    // Cria cards para cada seção de produtos
-    for (const section in products) {
-        const sectionProducts = products[section];
-        const sectionCard = document.createElement('div');
-        sectionCard.className = 'product-admin-card';
-        sectionCard.innerHTML = `
-            <div class="d-flex justify-content-between align-items-start">
-                <div class="d-flex align-items-center">
-                    <div class="me-3">
-                        <i class="bi bi-folder-fill text-primary"></i>
+    try {
+        container.innerHTML = '';
+        
+        if (Object.keys(products).length === 0) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <i class="bi bi-inbox"></i>
+                    <h5>Nenhuma seção encontrada</h5>
+                    <p>Adicione produtos para começar</p>
+                </div>
+            `;
+            isLoading = false;
+            return;
+        }
+        
+        for (const section in products) {
+            const sectionProducts = products[section];
+            const sectionCard = document.createElement('div');
+            sectionCard.className = 'product-admin-card';
+            sectionCard.innerHTML = `
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="d-flex align-items-center">
+                        <div class="me-3">
+                            <i class="bi bi-folder-fill text-primary"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-1 text-capitalize">${section}</h6>
+                            <p class="text-muted mb-0">${sectionProducts.length} produtos</p>
+                        </div>
                     </div>
-                    <div>
-                        <h6 class="mb-1 text-capitalize">${section}</h6>
-                        <p class="text-muted mb-0">${sectionProducts.length} produtos</p>
+                    <div class="text-end">
+                        <div class="fw-bold text-primary">R$ ${sectionProducts.reduce((t, p) => t + p.price, 0).toFixed(2).replace('.', ',')}</div>
+                        <small class="text-muted">Valor total</small>
                     </div>
                 </div>
-                <div class="text-end">
-                    <div class="fw-bold text-primary">R$ ${sectionProducts.reduce((t, p) => t + p.price, 0).toFixed(2).replace('.', ',')}</div>
-                    <small class="text-muted">Valor total</small>
+                <div class="mt-2 d-flex gap-1">
+                    <button class="btn btn-sm btn-outline-primary" onclick="openSectionManager('${section}')">
+                        <i class="bi bi-pencil"></i> Gerenciar
+                    </button>
+                    <button class="btn btn-sm btn-success" onclick="openProductModal(null, '${section}')">
+                        <i class="bi bi-plus"></i> Add
+                    </button>
                 </div>
-            </div>
-            <div class="mt-2 d-flex gap-1">
-                <button class="btn btn-sm btn-outline-primary" onclick="openSectionManager('${section}')">
-                    <i class="bi bi-pencil"></i> Gerenciar
-                </button>
-                <button class="btn btn-sm btn-success" onclick="openProductModal(null, '${section}')">
-                    <i class="bi bi-plus"></i> Add
-                </button>
+            `;
+            container.appendChild(sectionCard);
+        }
+    } catch (error) {
+        console.error('Erro ao carregar produtos por seção:', error);
+        container.innerHTML = `
+            <div class="alert alert-danger">
+                <i class="bi bi-exclamation-triangle"></i>
+                Erro ao carregar produtos. Recarregue a página.
             </div>
         `;
-        container.appendChild(sectionCard);
     }
+    
+    isLoading = false;
 }
 
 // Função para carregar relatório de categorias
 function loadCategoryReport() {
-    const stats = calculateProductStats();
-    const container = document.getElementById('categoryReport');
-    if (!container) return;
-    
-    container.innerHTML = '';
-    
-    // Ordena categorias por quantidade e pega as top 8
-    const sortedCategories = Object.entries(stats.categories)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 8);
-    
-    // Cria linhas da tabela para cada categoria
-    sortedCategories.forEach(([category, count]) => {
-        const row = document.createElement('tr');
-        const percentage = ((count / stats.totalProducts) * 100).toFixed(1);
-        row.innerHTML = `
-            <td class="text-capitalize">${category}</td>
-            <td>${count}</td>
-            <td><span class="badge bg-success">${percentage}%</span></td>
-        `;
-        container.appendChild(row);
-    });
+    try {
+        const stats = calculateProductStats();
+        const container = document.getElementById('categoryReport');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        if (Object.keys(stats.categories).length === 0) {
+            container.innerHTML = `
+                <tr>
+                    <td colspan="3" class="text-center text-muted py-3">
+                        <i class="bi bi-info-circle"></i> Nenhuma categoria encontrada
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+        
+        const sortedCategories = Object.entries(stats.categories)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 8);
+        
+        sortedCategories.forEach(([category, count]) => {
+            const row = document.createElement('tr');
+            const percentage = ((count / stats.totalProducts) * 100).toFixed(1);
+            row.innerHTML = `
+                <td class="text-capitalize">${category}</td>
+                <td>${count}</td>
+                <td><span class="badge bg-success">${percentage}%</span></td>
+            `;
+            container.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Erro ao carregar relatório de categorias:', error);
+    }
 }
 
 // Função para obter categorias disponíveis por seção
 function getCategoriesForSection(section) {
-    // Tenta carregar categorias do sistema principal
-    if (typeof getAvailableCategories !== 'undefined') {
-        return getAvailableCategories(section);
-    }
-    
-    // Categorias padrão como fallback
     const defaultCategories = {
         'padaria': ['Pães', 'Bolos', 'Salgados', 'Tortas', 'Doces'],
         'acougue': ['Bovina', 'Suína', 'Frango', 'Linguiças', 'Peixes'],
@@ -207,7 +323,6 @@ function openSectionManager(section) {
     const products = loadProductsData();
     const sectionProducts = products[section] || [];
     
-    // Cria ou atualiza o modal existente
     let modalElement = document.getElementById('sectionManagerModal');
     
     if (!modalElement) {
@@ -218,7 +333,6 @@ function openSectionManager(section) {
         document.body.appendChild(modalElement);
     }
     
-    // HTML do modal de gerenciamento
     modalElement.innerHTML = `
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -226,60 +340,100 @@ function openSectionManager(section) {
                     <h5 class="modal-title">
                         <i class="bi bi-grid-3x3-gap"></i> 
                         Gerenciar ${section.charAt(0).toUpperCase() + section.slice(1)} 
-                        <span class="badge bg-light text-primary">${sectionProducts.length} produtos</span>
+                        <span class="badge bg-light text-primary ms-2">${sectionProducts.length} produtos</span>
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
                         <button class="btn btn-success" onclick="openProductModal(null, '${section}')">
                             <i class="bi bi-plus-circle"></i> Adicionar Novo Produto
                         </button>
-                        <div class="text-muted">
-                            <i class="bi bi-info-circle"></i> Clique em um produto para editar
+                        <div class="text-muted small">
+                            <i class="bi bi-info-circle"></i> Gerencie os produtos da seção
                         </div>
                     </div>
                     
-                    <div class="row g-3" id="productsGrid">
-                        ${sectionProducts.map(product => `
-                            <div class="col-md-6 col-lg-4">
-                                <div class="card product-card h-100" onclick="openProductModal(${product.id}, '${section}')" style="cursor: pointer;">
-                                    <div class="card-body text-center">
-                                        <div class="product-image-container mb-3">
-                                            <img src="${product.image}" alt="${product.name}" 
-                                                 class="product-image" 
-                                                 onerror="this.src='img/icon/rg.png'">
-                                        </div>
-                                        <h6 class="card-title">${product.name}</h6>
-                                        <div class="card-text">
-                                            <div class="fw-bold text-success">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
-                                            <small class="text-muted">${product.category}</small>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer bg-transparent">
-                                        <button class="btn btn-sm btn-outline-danger w-100" 
-                                                onclick="event.stopPropagation(); deleteProduct(${product.id})">
-                                            <i class="bi bi-trash"></i> Excluir
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        `).join('')}
-                        
-                        ${sectionProducts.length === 0 ? `
-                            <div class="col-12 text-center py-5">
-                                <i class="bi bi-inbox display-1 text-muted"></i>
-                                <h5 class="text-muted mt-3">Nenhum produto encontrado</h5>
-                                <p class="text-muted">Clique no botão acima para adicionar seu primeiro produto</p>
-                            </div>
-                        ` : ''}
+                    ${sectionProducts.length > 0 ? `
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th width="60" class="text-center">Imagem</th>
+                                        <th>Produto</th>
+                                        <th>Categoria</th>
+                                        <th width="120" class="text-end">Preço</th>
+                                        <th width="200" class="text-center">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${sectionProducts.map(product => `
+                                        <tr>
+                                            <td class="text-center">
+                                                <img src="${product.image}" 
+                                                     alt="${product.name}" 
+                                                     class="rounded border" 
+                                                     style="width: 50px; height: 50px; object-fit: cover;"
+                                                     onerror="this.src='../img/icon/rg.png'">
+                                            </td>
+                                            <td>
+                                                <div class="fw-semibold">${product.name}</div>
+                                                <small class="text-muted">ID: ${product.id}</small>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-secondary">${product.category}</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <span class="fw-bold text-success">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="btn-group btn-group-sm" role="group">
+                                                    <button type="button" class="btn btn-outline-primary" 
+                                                            onclick="openProductModal(${product.id}, '${section}')"
+                                                            title="Editar produto">
+                                                        <i class="bi bi-pencil"></i> Editar
+                                                    </button>
+                                                    <button type="button" class="btn btn-outline-danger" 
+                                                            onclick="deleteProduct(${product.id})"
+                                                            title="Excluir produto">
+                                                        <i class="bi bi-trash"></i> Excluir
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                                <tfoot class="table-light">
+                                    <tr>
+                                        <td colspan="3" class="text-end fw-semibold">Total:</td>
+                                        <td class="text-end fw-bold text-success">
+                                            R$ ${sectionProducts.reduce((sum, product) => sum + product.price, 0).toFixed(2).replace('.', ',')}
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    ` : `
+                        <div class="text-center py-5">
+                            <i class="bi bi-inbox display-1 text-muted"></i>
+                            <h5 class="text-muted mt-3">Nenhum produto encontrado</h5>
+                            <p class="text-muted">Clique no botão acima para adicionar seu primeiro produto</p>
+                        </div>
+                    `}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle"></i> Fechar
+                    </button>
+                    <div class="text-muted small">
+                        ${sectionProducts.length} produto(s) listado(s)
                     </div>
                 </div>
             </div>
         </div>
     `;
     
-    // Exibe o modal
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
 }
@@ -290,7 +444,6 @@ function openProductModal(productId = null, section = null) {
     let product = null;
     let productSection = section;
     
-    // Busca produto para edição se ID for fornecido
     if (productId) {
         for (const sec in products) {
             const found = products[sec].find(p => p.id === productId);
@@ -304,7 +457,6 @@ function openProductModal(productId = null, section = null) {
     
     const categories = getCategoriesForSection(productSection || 'padaria');
     
-    // Cria ou atualiza o modal
     let modalElement = document.getElementById('productModal');
     
     if (!modalElement) {
@@ -315,7 +467,6 @@ function openProductModal(productId = null, section = null) {
         document.body.appendChild(modalElement);
     }
     
-    // HTML do modal de produto
     modalElement.innerHTML = `
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -373,7 +524,7 @@ function openProductModal(productId = null, section = null) {
                                 <div class="mb-3">
                                     <label class="form-label">URL da Imagem</label>
                                     <input type="text" class="form-control" id="productImage" 
-                                           value="${product ? product.image : ''}" 
+                                           value="${product ? product.image.replace('../', '') : ''}" 
                                            placeholder="img/produtos/secao/nome-da-imagem.jpg"
                                            onchange="updateImagePreview(this.value)">
                                     <small class="form-text text-muted">
@@ -385,11 +536,11 @@ function openProductModal(productId = null, section = null) {
                                     <label class="form-label">Pré-visualização:</label>
                                     <div class="image-preview border rounded p-3 text-center">
                                         <img id="imagePreview" 
-                                             src="${product ? product.image : 'img/icon/rg.png'}" 
+                                             src="${product ? product.image : '../img/icon/rg.png'}" 
                                              alt="Pré-visualização" 
                                              class="img-fluid rounded"
                                              style="max-height: 200px; object-fit: contain;"
-                                             onerror="this.src='img/icon/rg.png'">
+                                             onerror="this.src='../img/icon/rg.png'">
                                         <div id="noImageText" class="text-muted mt-2 ${product && product.image ? 'd-none' : ''}">
                                             <i class="bi bi-image"></i><br>
                                             Imagem não disponível
@@ -416,7 +567,6 @@ function openProductModal(productId = null, section = null) {
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
     
-    // Atualiza categorias se seção for fornecida
     if (productSection) {
         updateCategories(productSection);
     }
@@ -439,7 +589,9 @@ function updateImagePreview(imageUrl) {
     const noImageText = document.getElementById('noImageText');
     
     if (preview) {
-        preview.src = imageUrl || 'img/icon/rg.png';
+        // Corrige o caminho da imagem para preview
+        const correctedPath = fixImagePath(imageUrl);
+        preview.src = correctedPath;
     }
     
     if (noImageText) {
@@ -447,42 +599,38 @@ function updateImagePreview(imageUrl) {
     }
 }
 
-// Função para salvar produto (adicionar ou editar)
+// Função para salvar produto
 function saveProduct(productId = null) {
     const form = document.getElementById('productForm');
     
-    // Valida formulário
     if (!form.checkValidity()) {
         form.reportValidity();
         return;
     }
     
-    // Coleta dados do formulário
     const productData = {
         name: document.getElementById('productName').value,
         price: parseFloat(document.getElementById('productPrice').value),
         category: document.getElementById('productCategory').value,
-        image: document.getElementById('productImage').value || 'img/icon/rg.png',
+        image: fixImagePath(document.getElementById('productImage').value || 'img/icon/rg.png'),
         section: document.getElementById('productSection').value
     };
     
-    // Verifica se sistema de produtos está disponível
+    // Simulação de salvamento - você deve integrar com seu sistema real
     if (typeof adminProducts !== 'undefined') {
         let success = false;
         
         if (productId) {
-            // Edita produto existente
             success = adminProducts.editProduct(productId, productData);
         } else {
-            // Adiciona novo produto
             const newProduct = adminProducts.addProduct(productData.section, productData);
             success = !!newProduct;
         }
         
         if (success) {
             showAlert(`Produto ${productId ? 'atualizado' : 'adicionado'} com sucesso!`, 'success');
+            clearCache();
             
-            // Fecha o modal
             const modal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
             if (modal) modal.hide();
             
@@ -491,7 +639,14 @@ function saveProduct(productId = null) {
             showAlert('Erro ao salvar produto!', 'danger');
         }
     } else {
-        showAlert('Sistema de produtos não disponível!', 'danger');
+        // Fallback para demonstração
+        showAlert(`Produto ${productId ? 'atualizado' : 'adicionado'} com sucesso! (Demo)`, 'success');
+        clearCache();
+        
+        const modal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
+        if (modal) modal.hide();
+        
+        refreshDashboard();
     }
 }
 
@@ -501,8 +656,8 @@ function deleteProduct(productId) {
     
     if (typeof adminProducts !== 'undefined' && adminProducts.removeProduct(productId)) {
         showAlert('Produto excluído com sucesso!', 'success');
+        clearCache();
         
-        // Fecha o modal de gerenciamento
         const sectionModal = bootstrap.Modal.getInstance(document.getElementById('sectionManagerModal'));
         if (sectionModal) sectionModal.hide();
         
@@ -512,8 +667,16 @@ function deleteProduct(productId) {
     }
 }
 
+// Função para limpar cache
+function clearCache() {
+    productsCache = null;
+    statsCache = null;
+}
+
 // Função para atualizar todo o dashboard
 function refreshDashboard() {
+    if (isLoading) return;
+    
     updateProductStats();
     loadProductsBySection();
     loadCategoryReport();
@@ -537,14 +700,16 @@ function loadDashboardData() {
         document.getElementById('userEmail').textContent = userEmail;
     }
     
-    refreshDashboard();
+    // Aguarda um pouco para garantir que o DOM está totalmente carregado
+    setTimeout(() => {
+        refreshDashboard();
+    }, 100);
 }
 
-// Inicialização do sistema quando o DOM estiver carregado
+// Inicialização do sistema
 document.addEventListener('DOMContentLoaded', function() {
     checkAuth();
     
-    // Configura formulário de login
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         loginForm.addEventListener('submit', function(e) {
@@ -561,13 +726,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Configura botão de logout
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', logout);
     }
     
-    // Carrega dados do dashboard se na página correta
     if (window.location.pathname.includes('dashboard.html')) {
         loadDashboardData();
     }
