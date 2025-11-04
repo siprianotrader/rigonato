@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,47 +19,47 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 
 </head>
-   
-    <!-- Sistema de Sincronização em Tempo Real -->
-<script>
-// Verifica atualizações a cada segundo
-setInterval(function() {
-    const lastUpdate = localStorage.getItem('productsLastUpdate');
-    const currentTime = Date.now().toString();
-    
-    // Se detectar que houve uma atualização recente (últimos 5 segundos)
-    if (lastUpdate && (currentTime - parseInt(lastUpdate)) < 5000) {
-        console.log('Atualização detectada, recarregando produtos...');
-        
-        // Recarrega os produtos
-        if (typeof loadProducts === 'function') {
-            loadProducts();
-        }
-        if (typeof loadSectionProducts === 'function') {
-            loadSectionProducts();
-        }
-        
-        // Limpa o timestamp para evitar recarregamentos desnecessários
-        localStorage.removeItem('productsLastUpdate');
-    }
-}, 1000);
 
-// Também escuta por mudanças no localStorage
-window.addEventListener('storage', function(e) {
-    if (e.key === 'rigonatoProducts' || e.key === 'productsLastUpdate') {
-        console.log('Mudança nos produtos detectada via storage event');
-        
-        // Pequeno delay para garantir que os dados foram salvos
-        setTimeout(function() {
+<!-- Sistema de Sincronização em Tempo Real -->
+<script>
+    // Verifica atualizações a cada segundo
+    setInterval(function() {
+        const lastUpdate = localStorage.getItem('productsLastUpdate');
+        const currentTime = Date.now().toString();
+
+        // Se detectar que houve uma atualização recente (últimos 5 segundos)
+        if (lastUpdate && (currentTime - parseInt(lastUpdate)) < 5000) {
+            console.log('Atualização detectada, recarregando produtos...');
+
+            // Recarrega os produtos
             if (typeof loadProducts === 'function') {
                 loadProducts();
             }
             if (typeof loadSectionProducts === 'function') {
                 loadSectionProducts();
             }
-        }, 100);
-    }
-});
+
+            // Limpa o timestamp para evitar recarregamentos desnecessários
+            localStorage.removeItem('productsLastUpdate');
+        }
+    }, 1000);
+
+    // Também escuta por mudanças no localStorage
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'rigonatoProducts' || e.key === 'productsLastUpdate') {
+            console.log('Mudança nos produtos detectada via storage event');
+
+            // Pequeno delay para garantir que os dados foram salvos
+            setTimeout(function() {
+                if (typeof loadProducts === 'function') {
+                    loadProducts();
+                }
+                if (typeof loadSectionProducts === 'function') {
+                    loadSectionProducts();
+                }
+            }, 100);
+        }
+    });
 </script>
 
 <body>
@@ -69,12 +70,12 @@ window.addEventListener('storage', function(e) {
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <!-- Logo (esquerda no desktop, centro no mobile) -->
             <a class="navbar-brand" href="index.html">
                 <img src="img/logo.png" alt="Supermercado Rigonato">
             </a>
-            
+
             <!-- Carrinho (sempre na direita) -->
             <div class="cart-icon-container">
                 <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">
@@ -152,7 +153,7 @@ window.addEventListener('storage', function(e) {
                         <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
                     </svg>
                 </button>
-                
+
                 <div class="carousel-track">
                     <a href="padaria.html" class="section-card">
                         <img src="img/categorias/padaria.jpg" alt="Padaria" class="section-icon">
@@ -183,13 +184,13 @@ window.addEventListener('storage', function(e) {
                         <h4 class="section-title">Novidades</h4>
                     </a>
                 </div>
-                
+
                 <button class="carousel-btn next">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
                     </svg>
                 </button>
-                
+
                 <div class="carousel-indicators">
                     <button class="carousel-indicator active" data-slide="0"></button>
                     <button class="carousel-indicator" data-slide="1"></button>
@@ -202,49 +203,49 @@ window.addEventListener('storage', function(e) {
     <section class="py-5 bg-light">
         <div class="container">
             <h2 class="mb-4 text-center">Produtos em Destaque</h2>
-            
+
             <div class="mb-5 text-center">
                 <h3 class="mb-3">Padaria</h3>
                 <div class="product-carousel" id="padaria-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
                 </div>
             </div>
-            
+
             <div class="mb-5 text-center">
                 <h3 class="mb-3">Açougue</h3>
                 <div class="product-carousel" id="acougue-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
                 </div>
             </div>
-            
+
             <div class="mb-5 text-center">
                 <h3 class="mb-3">Hortifrúti</h3>
                 <div class="product-carousel" id="hortifruti-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
                 </div>
             </div>
-            
+
             <div class="mb-5 text-center">
                 <h3 class="mb-3">Mercearia</h3>
                 <div class="product-carousel" id="mercearia-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
                 </div>
             </div>
-            
+
             <div class="mb-5 text-center">
                 <h3 class="mb-3">Rações</h3>
                 <div class="product-carousel" id="racoes-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
                 </div>
             </div>
-            
+
             <div class="mb-5 text-center">
                 <h3 class="mb-3">Bebidas</h3>
                 <div class="product-carousel" id="bebidas-carousel">
                     <!-- Produtos serão adicionados via JavaScript -->
                 </div>
             </div>
-            
+
             <div class="mb-5 text-center">
                 <h3 class="mb-3">Novidades</h3>
                 <div class="product-carousel" id="novidades-carousel">
@@ -285,7 +286,7 @@ window.addEventListener('storage', function(e) {
                                     <label for="customer-phone" class="form-label">Telefone</label>
                                     <input type="tel" class="form-control" id="customer-phone" required>
                                 </div>
-                                
+
                                 <div class="delivery-option">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="deliveryOption" id="deliveryHome" value="home" checked>
@@ -300,7 +301,7 @@ window.addEventListener('storage', function(e) {
                                         </label>
                                     </div>
                                 </div>
-                                
+
                                 <div id="address-fields">
                                     <div class="mb-3">
                                         <label for="customer-address" class="form-label">Endereço (Rua/Av.)</label>
@@ -325,7 +326,7 @@ window.addEventListener('storage', function(e) {
                                         <input type="text" class="form-control" id="customer-reference">
                                     </div>
                                 </div>
-                                
+
                                 <div class="mb-3">
                                     <label for="delivery-date" class="form-label">Data de Entrega/Retirada</label>
                                     <input type="date" class="form-control" id="delivery-date" required>
@@ -384,7 +385,8 @@ window.addEventListener('storage', function(e) {
                 </div>
             </div>
             <div class="text-center pt-3 border-top">
-                <p>&copy; 2025 Supermercado Rigonato. Todos os direitos reservados.</p>
+                <p>&copy;
+                    <a href="#">2025 Supermercado Rigonato.</a> Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -394,4 +396,5 @@ window.addEventListener('storage', function(e) {
     <!-- JavaScript Personalizado -->
     <script src="js/script.js"></script>
 </body>
+
 </html>
